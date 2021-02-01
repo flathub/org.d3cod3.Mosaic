@@ -42,17 +42,14 @@
   </provides>
 
   <releases>
-    <release version="0.4.8" date="2020-12-13">
+    <release version="0.4.9" date="2021-01-31">
       <description>
         <ul>
-          <li>better retina screen detection</li>
-          <li>upgraded openGL to 4.1</li>
-          <li>glsl shaders languages availables from 150 to 410</li>
-          <li>included example shaders updated</li>
-          <li>updated ofxAddonsTool to last commit</li>
-          <li>removed ofxFontStash dependency</li>
-          <li>fixed flatpak sandbox issue</li>
-          <li>switched subtitler to text paragraph</li>
+          <li>fixed file delete error form patch data folder when loading new patch</li>
+          <li>osc sender throw out of range on reloading patch</li>
+          <li>added rescan devices button to MIDI send/receive objects</li>
+          <li>added tracy profiler for solid debug and profiling, as submodule</li>
+          <li>added app release reference in patch files</li>
         </ul>
       </description>
     </release>
