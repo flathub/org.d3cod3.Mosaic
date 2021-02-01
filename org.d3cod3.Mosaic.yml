@@ -336,12 +336,6 @@ modules:
         commit: e9854d5b3d265efa8e59dfc74238379ed135900d
         dest: addons/ofxFFmpegRecorder
       - type: git
-        url: https://github.com/d3cod3/ofxFontStash.git
-        # branch: master
-        # tag:
-        commit: 08b0ad91113f17f4eb276441adfedb54869bdc9b
-        dest: addons/ofxFontStash
-      - type: git
         url: https://github.com/Akira-Hayasaka/ofxGLEditor.git
         # branch: master
         # tag:
@@ -415,14 +409,14 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxTimeline.git
         # branch: master
-        tag: 0.4.8
-        commit: 2fc353fb45f6d659db693f13929976be664a02e7
+        tag: 0.4.9
+        commit: 09a5acf8a950553a30e6ae0ac624a1615b5bf860
         dest: addons/ofxTimeline
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
-        tag: 0.4.8
-        commit: 53838723d184fecfa43a5ad6667de0b96819c957
+        tag: 0.4.9
+        commit: ecd1c312919f8592385ff1b709bdbec81635403e
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -439,9 +433,9 @@ modules:
 # Mosaic
       - type: git
         url: https://github.com/d3cod3/Mosaic.git
-        tag: 0.4.8
+        tag: 0.4.9
         # branch: master
-        commit: 18e9da3639155aa15bf5aa7336fa7ffc6441b9c4
+        commit: 282f49cd4817ef266f6f677b67eb4e14f87b3926
         dest: apps/d3cod3/Mosaic
 
      
