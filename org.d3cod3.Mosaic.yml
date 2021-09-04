@@ -348,6 +348,12 @@ modules:
         commit: 55a5825ddf510c991466f9d39d8e1d57b2bc2008
         dest: addons/ofxJSON
       - type: git
+        url: https://github.com/d3cod3/ofxHapPlayer.git
+        # branch: master
+        tag: 0.5.0
+        commit: e8a7e810f7d3ce3869af39e6d5ceb99168a3463a
+        dest: addons/ofxHapPlayer
+      - type: git
         url: https://github.com/d3cod3/ofxImGui.git
         # branch: master
         tag: 0.4.8
@@ -395,10 +401,10 @@ modules:
         commit: 57a4a36b0bf361d943ce5ef4621b26816ab2e08f
         dest: addons/ofxPdExternals
       - type: git
-        url: https://github.com/npisanti/ofxPDSP.git
+        url: https://github.com/d3cod3/ofxPDSP.git
         # branch: master
         # tag:
-        commit: e106991f4abf4314116d4e7c4ef7ad69d6ca005f
+        commit: a64410c1dd0231de2a3fde6c81da6ea9043b3d11
         dest: addons/ofxPDSP
       - type: git
         url: https://github.com/d3cod3/ofxPython.git
@@ -415,8 +421,8 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
-        tag: 0.4.9
-        commit: ecd1c312919f8592385ff1b709bdbec81635403e
+        tag: 0.5.0
+        commit: a9e3790422e664bd36297d2a533e4d6b99e0b678
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -433,9 +439,9 @@ modules:
 # Mosaic
       - type: git
         url: https://github.com/d3cod3/Mosaic.git
-        tag: 0.4.9
+        tag: 0.5.0
         # branch: master
-        commit: 282f49cd4817ef266f6f677b67eb4e14f87b3926
+        commit: a5caa8931a21e8b91e5d97a1ec407a2fa1e7f83b
         dest: apps/d3cod3/Mosaic
 
      
