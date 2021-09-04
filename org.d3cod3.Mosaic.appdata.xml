@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2013 First Lastname <your@email.com> -->
+<!-- Copyright 2021 Emanuele Mazza aka n3m3da <n3m3da@d3cod3.org> -->
 <component type="desktop-application">
   <id>org.d3cod3.Mosaic</id>
   <metadata_license>FSFAP</metadata_license>
@@ -42,14 +42,14 @@
   </provides>
 
   <releases>
-    <release version="0.4.9" date="2021-01-31">
+    <release version="0.5.0" date="2021-09-04">
       <description>
         <ul>
-          <li>fixed file delete error form patch data folder when loading new patch</li>
-          <li>osc sender throw out of range on reloading patch</li>
-          <li>added rescan devices button to MIDI send/receive objects</li>
-          <li>added tracy profiler for solid debug and profiling, as submodule</li>
-          <li>added app release reference in patch files</li>
+          <li>added texture mixer object to mix up to 32 texture using alpha</li>
+          <li>Updated ofxAddonsTool to last commit</li>
+          <li>Added ofxHapPlayer addon ( forked with some minor tweaks ) for using now in Mosaic the HAP codec as the standard for the video player object</li>
+          <li>Various imgui node editor gui fixings from @Daandelange</li>
+          <li>A bunch of bugfixes</li>
         </ul>
       </description>
     </release>
