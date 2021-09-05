@@ -356,7 +356,7 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxImGui.git
         # branch: master
-        tag: 0.4.8
+        tag: 0.5.0
         commit: 73cf7f142958c7588c82d5ddd59aba2b556e3daa
         dest: addons/ofxImGui
       - type: git
