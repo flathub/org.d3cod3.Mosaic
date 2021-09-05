@@ -258,7 +258,8 @@ modules:
       - cp src/fftw3/.libs/libfftw3f.a addons/ofxAudioAnalyzer/libs/fftw3f/lib/linux64/
       - cp addons/ofxNDI/libs/libndi/lib/x86_64-linux-gnu/libndi.so.3.7.1 /app/lib
       - ln -s /app/lib/libndi.so.3.7.1 /app/lib/libndi.so.3
-      - cd apps/d3cod3/Mosaic && make -j$FLATPAK_BUILDER_N_JOBS
+      - cd apps/d3cod3/Mosaic && make # one thread compile for error checking
+      #- cd apps/d3cod3/Mosaic && make -j$FLATPAK_BUILDER_N_JOBS
       # debug - cd apps/d3cod3/Mosaic && make CXXFLAGS='-g -O2' -j$FLATPAK_BUILDER_N_JOBS Debug
       - mkdir /app/mosaic
       - cp -ar * /app/mosaic
