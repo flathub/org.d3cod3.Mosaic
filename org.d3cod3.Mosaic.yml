@@ -115,7 +115,7 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=Debug
       - -DOPENCV_GENERATE_PKGCONFIG=ON
-      - -OPENCV_ENABLE_NONFREE=ON
+      - -OPENCV_ENABLE_NONFREE=OFF
       - -DWITH_OPENCL=ON
       - -DWITH_OPENGL=ON
       - -DWITH_TBB=ON
