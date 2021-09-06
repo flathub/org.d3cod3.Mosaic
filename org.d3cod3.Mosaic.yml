@@ -264,7 +264,7 @@ modules:
       url: https://github.com/mheily/blocks-runtime/releases/download/v0.4.1/libblocksruntime-0.4.1.tar.gz
       sha256: 7807e18d7d6cabd90f77c8b8a8ebd472516fa4ed6a02df82e0c33b1c5e112abc
   - name: libpthread-workqueue
-    buildsystem: cmake-ninja
+    buildsystem: cmake
     config-opts:
     - "-DCMAKE_INSTALL_PREFIX=/usr"
     sources:
@@ -272,7 +272,7 @@ modules:
       url: https://github.com/mheily/libpwq/archive/refs/tags/v0.9.1.tar.gz
       sha256: 768f756a3813531c2d7c441bc0a6265a438e55edbfb4204506e5f68072471d33
   - name: libkqueue
-    buildsystem: cmake-ninja
+    buildsystem: cmake
     config-opts:
     - "-DCMAKE_INSTALL_PREFIX=/usr"
     sources:
