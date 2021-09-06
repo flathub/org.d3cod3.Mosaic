@@ -248,8 +248,14 @@ modules:
       - type: git
         url: https://github.com/lathiat/avahi
         tag: v0.8
+  - name: snappy
+    buildsystem: cmake-ninja
+    sources:
+    - type: archive
+      url: https://github.com/google/snappy/archive/refs/tags/1.1.9.tar.gz
+      sha256: 75c1fbb3d618dd3a0483bff0e26d0a92b495bbe5059c8b4f1c962b478b6e06e7
   - name: libdispatch
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     sources:
     - type: archive
       url: https://github.com/nickhutchinson/libdispatch/archive/refs/tags/v0.1.3.1.tar.gz
