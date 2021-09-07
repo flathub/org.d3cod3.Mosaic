@@ -66,9 +66,9 @@ modules:
         sha256: a15720dd741d7538dd2645f9f516d193636ae4300ff7dbc8bfca757bf166490a
         
   - name: libpthread-workqueue
-    buildsystem: cmake
-    config-opts:
-      - -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr
+    buildsystem: simple
+    build-commands:
+      - cmake -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr && make -j $FLATPAK_BUILDER_N_JOBS
     sources:
     - type: archive
       url: https://github.com/mheily/libpwq/archive/refs/tags/v0.9.1.tar.gz
