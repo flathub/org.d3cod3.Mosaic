@@ -86,7 +86,7 @@ modules:
   - name: libkqueue
     buildsystem: simple
     build-commands:
-      - cmake -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr make -j $FLATPAK_BUILDER_N_JOBS
+      - cmake -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr && make -j $FLATPAK_BUILDER_N_JOBS
     sources:
     - type: archive
       url: https://github.com/mheily/libkqueue/archive/refs/tags/v2.4.0.tar.gz
