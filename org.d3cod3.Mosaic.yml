@@ -64,15 +64,15 @@ modules:
       - type: archive
         url: https://github.com/iputils/iputils/archive/s20190709.tar.gz
         sha256: a15720dd741d7538dd2645f9f516d193636ae4300ff7dbc8bfca757bf166490a
-        
-  - name: libpthread-workqueue
+      
+  - name: libkqueue
     buildsystem: simple
     build-commands:
       - cmake -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr && make -j $FLATPAK_BUILDER_N_JOBS
     sources:
     - type: archive
-      url: https://github.com/mheily/libpwq/archive/refs/tags/v0.9.1.tar.gz
-      sha256: 768f756a3813531c2d7c441bc0a6265a438e55edbfb4204506e5f68072471d33
+      url: https://github.com/mheily/libkqueue/archive/refs/tags/v2.4.0.tar.gz
+      sha256: fbfb6693928cd7b27a6c037916a366af7c1b36a3b9da0a58ae5025b6a3c736e0
   
   - name: freeglut
     build-options:
@@ -278,24 +278,23 @@ modules:
       url: https://github.com/mheily/blocks-runtime/releases/download/v0.4.1/libblocksruntime-0.4.1.tar.gz
       sha256: 7807e18d7d6cabd90f77c8b8a8ebd472516fa4ed6a02df82e0c33b1c5e112abc
       
-  #- name: libpthread-workqueue
+  - name: libpthread-workqueue
+    buildsystem: simple
+    build-commands:
+      - cmake -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr && make -j $FLATPAK_BUILDER_N_JOBS
+    sources:
+    - type: archive
+      url: https://github.com/mheily/libpwq/archive/refs/tags/v0.9.1.tar.gz
+      sha256: 768f756a3813531c2d7c441bc0a6265a438e55edbfb4204506e5f68072471d33
+      
+  #- name: libkqueue
   #  buildsystem: cmake
   #  config-opts:
-  #  - "-G 'Unix Makefiles'"
   #  - "-DCMAKE_INSTALL_PREFIX=/usr"
   #  sources:
   #  - type: archive
-  #    url: https://github.com/mheily/libpwq/archive/refs/tags/v0.9.1.tar.gz
-  #    sha256: 768f756a3813531c2d7c441bc0a6265a438e55edbfb4204506e5f68072471d33
-      
-  - name: libkqueue
-    buildsystem: cmake
-    config-opts:
-    - "-DCMAKE_INSTALL_PREFIX=/usr"
-    sources:
-    - type: archive
-      url: https://github.com/mheily/libkqueue/archive/refs/tags/v2.4.0.tar.gz
-      sha256: fbfb6693928cd7b27a6c037916a366af7c1b36a3b9da0a58ae5025b6a3c736e0
+  #    url: https://github.com/mheily/libkqueue/archive/refs/tags/v2.4.0.tar.gz
+  #    sha256: fbfb6693928cd7b27a6c037916a366af7c1b36a3b9da0a58ae5025b6a3c736e0
       
   - name: libdispatch
     buildsystem: cmake
