@@ -77,7 +77,7 @@ modules:
   - name: libpthread-workqueue
     buildsystem: simple
     build-commands:
-      - cmake -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr -DCMAKE_INSTALL_LIBDIR=${FLATPAK_DEST}/lib
+      - cmake -DCMAKE_INSTALL_PREFIX=/app/usr -DCMAKE_INSTALL_LIBDIR=/app/lib
       - make -j $FLATPAK_BUILDER_N_JOBS
     sources:
     - type: archive
@@ -87,7 +87,7 @@ modules:
   - name: libkqueue
     buildsystem: simple
     build-commands:
-      - cmake -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr -DCMAKE_INSTALL_LIBDIR=${FLATPAK_DEST}/lib
+      - cmake -DCMAKE_INSTALL_PREFIX=/app/usr -DCMAKE_INSTALL_LIBDIR=/app/lib
       - make -j $FLATPAK_BUILDER_N_JOBS
       - make install
     sources:
