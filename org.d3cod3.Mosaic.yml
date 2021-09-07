@@ -67,6 +67,8 @@ modules:
         
   - name: libpthread-workqueue
     buildsystem: cmake
+    config-opts:
+      - -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr
     sources:
     - type: archive
       url: https://github.com/mheily/libpwq/archive/refs/tags/v0.9.1.tar.gz
