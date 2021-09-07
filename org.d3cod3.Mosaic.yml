@@ -64,15 +64,40 @@ modules:
       - type: archive
         url: https://github.com/iputils/iputils/archive/s20190709.tar.gz
         sha256: a15720dd741d7538dd2645f9f516d193636ae4300ff7dbc8bfca757bf166490a
+        
+  - name: libblocksruntime
+    buildsystem: simple
+    build-commands:
+      - ./configure && make -j $FLATPAK_BUILDER_N_JOBS
+    sources:
+    - type: archive
+      url: https://github.com/mheily/blocks-runtime/releases/download/v0.4.1/libblocksruntime-0.4.1.tar.gz
+      sha256: 7807e18d7d6cabd90f77c8b8a8ebd472516fa4ed6a02df82e0c33b1c5e112abc
+      
+  - name: libpthread-workqueue
+    buildsystem: simple
+    build-commands:
+      - cmake && make -j $FLATPAK_BUILDER_N_JOBS
+    sources:
+    - type: archive
+      url: https://github.com/mheily/libpwq/archive/refs/tags/v0.9.1.tar.gz
+      sha256: 768f756a3813531c2d7c441bc0a6265a438e55edbfb4204506e5f68072471d33
       
   - name: libkqueue
     buildsystem: simple
     build-commands:
-      - cmake -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr && make -j $FLATPAK_BUILDER_N_JOBS
+      - cmake make -j $FLATPAK_BUILDER_N_JOBS
     sources:
     - type: archive
       url: https://github.com/mheily/libkqueue/archive/refs/tags/v2.4.0.tar.gz
       sha256: fbfb6693928cd7b27a6c037916a366af7c1b36a3b9da0a58ae5025b6a3c736e0
+      
+  - name: libdispatch
+    buildsystem: cmake
+    sources:
+    - type: archive
+      url: https://github.com/nickhutchinson/libdispatch/archive/refs/tags/v0.1.3.1.tar.gz
+      sha256: aadaa74aaa155487b794aa28e1ab422d86d0e5a3cf3e6ab64def6a64b4b33c9e
   
   - name: freeglut
     build-options:
@@ -268,40 +293,6 @@ modules:
   #  - type: archive
   #    url: https://github.com/google/snappy/archive/refs/tags/1.1.9.tar.gz
   #    sha256: 75c1fbb3d618dd3a0483bff0e26d0a92b495bbe5059c8b4f1c962b478b6e06e7
-  
-  - name: libblocksruntime
-    buildsystem: simple
-    build-commands:
-      - ./configure && make -j $FLATPAK_BUILDER_N_JOBS
-    sources:
-    - type: archive
-      url: https://github.com/mheily/blocks-runtime/releases/download/v0.4.1/libblocksruntime-0.4.1.tar.gz
-      sha256: 7807e18d7d6cabd90f77c8b8a8ebd472516fa4ed6a02df82e0c33b1c5e112abc
-      
-  - name: libpthread-workqueue
-    buildsystem: simple
-    build-commands:
-      - cmake -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr && make -j $FLATPAK_BUILDER_N_JOBS
-    sources:
-    - type: archive
-      url: https://github.com/mheily/libpwq/archive/refs/tags/v0.9.1.tar.gz
-      sha256: 768f756a3813531c2d7c441bc0a6265a438e55edbfb4204506e5f68072471d33
-      
-  #- name: libkqueue
-  #  buildsystem: cmake
-  #  config-opts:
-  #  - "-DCMAKE_INSTALL_PREFIX=/usr"
-  #  sources:
-  #  - type: archive
-  #    url: https://github.com/mheily/libkqueue/archive/refs/tags/v2.4.0.tar.gz
-  #    sha256: fbfb6693928cd7b27a6c037916a366af7c1b36a3b9da0a58ae5025b6a3c736e0
-      
-  - name: libdispatch
-    buildsystem: cmake
-    sources:
-    - type: archive
-      url: https://github.com/nickhutchinson/libdispatch/archive/refs/tags/v0.1.3.1.tar.gz
-      sha256: aadaa74aaa155487b794aa28e1ab422d86d0e5a3cf3e6ab64def6a64b4b33c9e
       
   - name: openframeworks
     buildsystem: simple
