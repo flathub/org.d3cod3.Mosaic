@@ -89,6 +89,7 @@ modules:
     build-commands:
       - cmake -DCMAKE_INSTALL_PREFIX=${FLATPAK_DEST}/usr -DCMAKE_INSTALL_LIBDIR=${FLATPAK_DEST}/lib
       - make -j $FLATPAK_BUILDER_N_JOBS
+      - make install
     sources:
     - type: archive
       url: https://github.com/mheily/libkqueue/archive/refs/tags/v2.4.0.tar.gz
