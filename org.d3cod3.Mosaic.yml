@@ -290,15 +290,46 @@ modules:
       - type: git
         url: https://github.com/lathiat/avahi
         tag: v0.8
-        
-  #- name: snappy
-  #  buildsystem: cmake-ninja
-  #  builddir: true
-  #  sources:
-  #  - type: archive
-  #    url: https://github.com/google/snappy/archive/refs/tags/1.1.9.tar.gz
-  #    sha256: 75c1fbb3d618dd3a0483bff0e26d0a92b495bbe5059c8b4f1c962b478b6e06e7
-      
+  - name: libsnappy
+    buildsystem: cmake-ninja
+    config-opts:
+      - "-DBUILD_SHARED_LIBS=ON"
+      - "-DSNAPPY_BUILD_TESTS=OFF"
+      - "-DCMAKE_BUILD_TYPE=Release"
+    sources:
+      - type: git
+        url: https://github.com/google/snappy
+        tag: 1.1.7
+  # - name: libblocksruntime
+  #   buildsystem: simple
+  #   build-commands:
+  #     - ./configure && make -j $FLATPAK_BUILDER_N_JOBS
+  #   sources:
+  #     - type: archive
+  #       url: https://github.com/mheily/blocks-runtime/releases/download/v0.4.1/libblocksruntime-0.4.1.tar.gz
+  #       sha256: 7807e18d7d6cabd90f77c8b8a8ebd472516fa4ed6a02df82e0c33b1c5e112abc
+  # - name: libkqueue
+  #   buildsystem: cmake
+  #   config-opts:
+  #     - "-DCMAKE_INSTALL_PREFIX=/app"
+  #     - "-DCMAKE_INSTALL_LIBDIR=lib"
+  #   sources:
+  #     - type: git
+  #       url: https://github.com/mheily/libkqueue/
+  #       tag: v2.5.0
+  - name: libdispatch
+    buildsystem: cmake-ninja
+    build-options:
+      env:
+        CC: clang
+        CXX: clang++
+    sources:
+      - type: git
+        url: https://github.com/apple/swift-corelibs-libdispatch
+        tag: swift-5.5-RELEASE
+      - type: patch
+        path: avoid-kqueue.patch
+        strip-components: 0
   - name: openframeworks
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
@@ -391,7 +422,7 @@ modules:
         url: https://github.com/Akira-Hayasaka/ofxGLEditor.git
         # branch: master
         # tag:
-        commit: 830aac727a688ccd87de780f6f9d82e8ab2ffc4b
+        commit: 31529b5fbe05bb24aa36977f266dcb55ebec52b9
         dest: addons/ofxGLEditor
       - type: git
         url: https://github.com/jeffcrouse/ofxJSON.git
@@ -409,7 +440,7 @@ modules:
         url: https://github.com/d3cod3/ofxImGui.git
         # branch: master
         tag: 0.5.0
-        commit: 73cf7f142958c7588c82d5ddd59aba2b556e3daa
+        # commit:
         dest: addons/ofxImGui
       - type: git
         url: https://github.com/d3cod3/ofxInfiniteCanvas.git
@@ -488,6 +519,12 @@ modules:
         # tag:
         commit: 045e98ff560579d4adb2d8b18708aefbadffe1e8
         dest: src/fftw3
+      - type: git
+        url: https://github.com/d3cod3/ofxHapPlayer.git
+        # branch: libavformat
+        tag: 0.5.0
+        commit: e8a7e810f7d3ce3869af39e6d5ceb99168a3463a
+        dest: addons/ofxHapPlayer
 # Mosaic
       - type: git
         url: https://github.com/d3cod3/Mosaic.git
