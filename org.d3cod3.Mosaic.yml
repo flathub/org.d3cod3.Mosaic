@@ -115,7 +115,6 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=Debug
       - -DOPENCV_GENERATE_PKGCONFIG=ON
-      - -OPENCV_ENABLE_NONFREE=ON
       - -DWITH_OPENCL=ON
       - -DWITH_OPENGL=ON
       - -DWITH_TBB=ON
@@ -172,7 +171,7 @@ modules:
       - ./b2 -j $FLATPAK_BUILDER_N_JOBS install
     sources:
       - type: archive
-        url: https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.bz2
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.72.0/source/boost_1_72_0.tar.bz2
         sha256: 59c9b274bc451cf91a9ba1dd2c7fdcaf5d60b1b3aa83f2c9fa143417cc660722
 
   - name: glfw
@@ -248,6 +247,46 @@ modules:
       - type: git
         url: https://github.com/lathiat/avahi
         tag: v0.8
+  - name: libsnappy
+    buildsystem: cmake-ninja
+    config-opts:
+      - "-DBUILD_SHARED_LIBS=ON"
+      - "-DSNAPPY_BUILD_TESTS=OFF"
+      - "-DCMAKE_BUILD_TYPE=Release"
+    sources:
+      - type: git
+        url: https://github.com/google/snappy
+        tag: 1.1.7
+  # - name: libblocksruntime
+  #   buildsystem: simple
+  #   build-commands:
+  #     - ./configure && make -j $FLATPAK_BUILDER_N_JOBS
+  #   sources:
+  #     - type: archive
+  #       url: https://github.com/mheily/blocks-runtime/releases/download/v0.4.1/libblocksruntime-0.4.1.tar.gz
+  #       sha256: 7807e18d7d6cabd90f77c8b8a8ebd472516fa4ed6a02df82e0c33b1c5e112abc
+  # - name: libkqueue
+  #   buildsystem: cmake
+  #   config-opts:
+  #     - "-DCMAKE_INSTALL_PREFIX=/app"
+  #     - "-DCMAKE_INSTALL_LIBDIR=lib"
+  #   sources:
+  #     - type: git
+  #       url: https://github.com/mheily/libkqueue/
+  #       tag: v2.5.0
+  - name: libdispatch
+    buildsystem: cmake-ninja
+    build-options:
+      env:
+        CC: clang
+        CXX: clang++
+    sources:
+      - type: git
+        url: https://github.com/apple/swift-corelibs-libdispatch
+        tag: swift-5.5-RELEASE
+      - type: patch
+        path: avoid-kqueue.patch
+        strip-components: 0
   - name: openframeworks
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
@@ -336,16 +375,10 @@ modules:
         commit: e9854d5b3d265efa8e59dfc74238379ed135900d
         dest: addons/ofxFFmpegRecorder
       - type: git
-        url: https://github.com/d3cod3/ofxFontStash.git
-        # branch: master
-        # tag:
-        commit: 08b0ad91113f17f4eb276441adfedb54869bdc9b
-        dest: addons/ofxFontStash
-      - type: git
         url: https://github.com/Akira-Hayasaka/ofxGLEditor.git
         # branch: master
         # tag:
-        commit: 830aac727a688ccd87de780f6f9d82e8ab2ffc4b
+        commit: 31529b5fbe05bb24aa36977f266dcb55ebec52b9
         dest: addons/ofxGLEditor
       - type: git
         url: https://github.com/jeffcrouse/ofxJSON.git
@@ -356,8 +389,8 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxImGui.git
         # branch: master
-        tag: 0.4.8
-        commit: 73cf7f142958c7588c82d5ddd59aba2b556e3daa
+        tag: 0.5.0
+        # commit:
         dest: addons/ofxImGui
       - type: git
         url: https://github.com/d3cod3/ofxInfiniteCanvas.git
@@ -401,10 +434,10 @@ modules:
         commit: 57a4a36b0bf361d943ce5ef4621b26816ab2e08f
         dest: addons/ofxPdExternals
       - type: git
-        url: https://github.com/npisanti/ofxPDSP.git
+        url: https://github.com/d3cod3/ofxPDSP.git
         # branch: master
         # tag:
-        commit: e106991f4abf4314116d4e7c4ef7ad69d6ca005f
+        commit: a64410c1dd0231de2a3fde6c81da6ea9043b3d11
         dest: addons/ofxPDSP
       - type: git
         url: https://github.com/d3cod3/ofxPython.git
@@ -415,14 +448,14 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxTimeline.git
         # branch: master
-        tag: 0.4.8
-        commit: 2fc353fb45f6d659db693f13929976be664a02e7
+        tag: 0.4.9
+        commit: 09a5acf8a950553a30e6ae0ac624a1615b5bf860
         dest: addons/ofxTimeline
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
-        tag: 0.4.8
-        commit: 53838723d184fecfa43a5ad6667de0b96819c957
+        tag: 0.5.0
+        commit: a9e3790422e664bd36297d2a533e4d6b99e0b678
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -436,12 +469,18 @@ modules:
         # tag:
         commit: 045e98ff560579d4adb2d8b18708aefbadffe1e8
         dest: src/fftw3
+      - type: git
+        url: https://github.com/d3cod3/ofxHapPlayer.git
+        # branch: libavformat
+        tag: 0.5.0
+        commit: e8a7e810f7d3ce3869af39e6d5ceb99168a3463a
+        dest: addons/ofxHapPlayer
 # Mosaic
       - type: git
         url: https://github.com/d3cod3/Mosaic.git
-        tag: 0.4.8
+        tag: 0.5.0
         # branch: master
-        commit: 18e9da3639155aa15bf5aa7336fa7ffc6441b9c4
+        commit: a5caa8931a21e8b91e5d97a1ec407a2fa1e7f83b
         dest: apps/d3cod3/Mosaic
 
      
