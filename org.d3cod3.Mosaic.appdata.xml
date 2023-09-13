@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2021 Emanuele Mazza aka n3m3da <n3m3da@d3cod3.org> -->
+<!-- Copyright 2023 Emanuele Mazza aka n3m3da <n3m3da@d3cod3.org> -->
 <component type="desktop-application">
   <id>org.d3cod3.Mosaic</id>
   <metadata_license>FSFAP</metadata_license>
@@ -8,9 +8,7 @@
   <summary>An openFrameworks based Visual Patching Creative-Coding Platform</summary>
 
   <description>
-    <p>
-      Mosaic is a multi-platform livecoding programming/patching environment for creating real-time audio-visual compositions. It's principally designed for live needs, as can be teaching in class, live performing in an algorave, or running a generative audio-visual installation in a museum. It aims to empower artists, creative coders, scenographers and other creative technologists in their creative workflow
-    </p>
+    <p>Mosaic is a multi-platform livecoding programming/patching environment for creating real-time audio-visual compositions. It's principally designed for live needs, as can be teaching in class, live performing in an algorave, or running a generative audio-visual installation in a museum. It aims to empower artists, creative coders, scenographers and other creative technologists in their creative workflow</p>
     
   </description>
 
@@ -42,14 +40,24 @@
   </provides>
 
   <releases>
-    <release version="0.5.0" date="2021-09-04">
+    <release version="0.6.6" date="2023-09-11">
       <description>
+      <p>Changes: </p>
         <ul>
-          <li>added texture mixer object to mix up to 32 texture using alpha</li>
-          <li>Updated ofxAddonsTool to last commit</li>
-          <li>Added ofxHapPlayer addon ( forked with some minor tweaks ) for using now in Mosaic the HAP codec as the standard for the video player object</li>
-          <li>Various imgui node editor gui fixings from @Daandelange</li>
-          <li>A bunch of bugfixes</li>
+          <li>- FLOSS, Free/Libre and Open Source Software</li>
+          - cross-platform
+          - openGL 4.1, glsl shading languages from 150 to 410
+          - plugin injection capable, see [Mosaic Plugin](https://github.com/d3cod3/Mosaic-Plugin)
+          - multi-threaded
+          - ImGui based docking GUI interface
+          - non-blocking system dialogs
+          - lua/glsl/bash live-coding
+          - pure data live-patching
+          - good selection of audio synthesis modules
+          - non-linear interactive graphical timeline
+          - warping integrated on output window object
+          - mapmap style projection mapping module
+          - [tracy profiler](https://github.com/wolfpld/tracy) for solid debug and profiling
         </ul>
       </description>
     </release>
