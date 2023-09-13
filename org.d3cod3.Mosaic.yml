@@ -2,6 +2,8 @@ app-id: org.d3cod3.Mosaic
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm16
 command: mosaic
 finish-args:
   # X11 + XShm access
@@ -150,7 +152,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=Debug
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DOPENCV_GENERATE_PKGCONFIG=ON
       #- -OPENCV_ENABLE_NONFREE=ON
       - -DWITH_OPENCL=ON
@@ -172,11 +174,11 @@ modules:
     #   - "/bin"
     sources:
       - type: archive
-        url: https://github.com/opencv/opencv/archive/4.2.0.tar.gz
-        sha256: 9ccb2192d7e8c03c58fee07051364d94ed7599363f3b0dce1c5e6cc11c1bb0ec
+        url: https://github.com/opencv/opencv/archive/4.8.0.tar.gz
+        sha256: cbf47ecc336d2bff36b0dcd7d6c179a9bb59e805136af6b9670ca944aef889bd
       - type: archive
-        url: https://github.com/opencv/opencv_contrib/archive/4.2.0.tar.gz
-        sha256: 8a6b5661611d89baa59a26eb7ccf4abb3e55d73f99bb52d8f7c32265c8a43020
+        url: https://github.com/opencv/opencv_contrib/archive/4.8.0.tar.gz
+        sha256: b4aef0f25a22edcd7305df830fa926ca304ea9db65de6ccd02f6cfa5f3357dbb
         # dest: contrib
 
   - name: assimp
@@ -209,8 +211,8 @@ modules:
       - ./b2 -j $FLATPAK_BUILDER_N_JOBS install
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.72.0/source/boost_1_72_0.tar.bz2
-        sha256: 59c9b274bc451cf91a9ba1dd2c7fdcaf5d60b1b3aa83f2c9fa143417cc660722
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.tar.bz2
+        sha256: 6478edfe2f3305127cffe8caf73ea0176c53769f4bf1585be237eb30798c3b8e
 
   - name: glfw
     buildsystem: cmake-ninja
@@ -252,8 +254,8 @@ modules:
     buildsystem: cmake
     sources:
     - type: archive
-      url: https://github.com/pocoproject/poco/archive/poco-1.10.1-release.tar.gz
-      sha256: 44592a488d2830c0b4f3bfe4ae41f0c46abbfad49828d938714444e858a00818
+      url: https://github.com/pocoproject/poco/archive/poco-1.12.4-release.tar.gz
+      sha256: 71ef96c35fced367d6da74da294510ad2c912563f12cd716ab02b6ed10a733ef
   - name: libdaemon
     buildsystem: autotools
     config-opts:
@@ -317,6 +319,8 @@ modules:
   - name: libdispatch
     buildsystem: cmake-ninja
     build-options:
+      append-path: /usr/lib/sdk/llvm16/bin
+      prepend-ld-library-path: /usr/lib/sdk/llvm16/lib
       env:
         CC: clang
         CXX: clang++
