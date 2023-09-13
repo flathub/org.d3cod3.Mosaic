@@ -1,0 +1,36 @@
+From e4db7a1c3a62df4129831091b3ac0cd5c39d10fc Mon Sep 17 00:00:00 2001
+From: bbhtt <bbhtt.zn0i8@slmail.me>
+Date: Wed, 13 Sep 2023 17:55:23 +0530
+Subject: [PATCH] Fix build with gcc
+
+Ref. https://github.com/bangnoise/ofxHapPlayer/issues/66#issuecomment-833333838
+---
+addons/ofxHapPlayer/src/ofxHapPlayer.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/addons/ofxHapPlayer/src/ofxHapPlayer.cpp b/addons/ofxHapPlayer/src/ofxHapPlayer.cpp
+index 6c8769d..d99f956 100644
+--- a/addons/ofxHapPlayer/src/ofxHapPlayer.cpp
++++ b/addons/ofxHapPlayer/src/ofxHapPlayer.cpp
+@@ -45,7 +45,6 @@ extern "C" {
+ #if defined(TARGET_WIN32)
+ #include <ppl.h>
+ #elif defined(TARGET_LINUX)
+-#include <dispatch/dispatch.h>
+ #endif
+
+ // This amount will be bufferred before and after the playhead
+@@ -107,8 +106,9 @@ namespace ofxHapPY {
+             function(p, i);
+         });
+ #else
+-        struct Work w = {p, function};
+-        dispatch_apply_f(count, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), &w, decodeWrapper);
++        for (int i = 0; i < count; i++) {
++            function(p, i);
++        }
+ #endif
+     }
+
+--
+2.41.0

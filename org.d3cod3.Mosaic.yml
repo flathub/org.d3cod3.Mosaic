@@ -435,6 +435,8 @@ modules:
         tag: 0.5.0
         commit: e8a7e810f7d3ce3869af39e6d5ceb99168a3463a
         dest: addons/ofxHapPlayer
+      - type: patch
+        path: ofxHapPlayer-gcc.patch
       - type: git
         url: https://github.com/d3cod3/ofxImGui.git
         # branch: master
