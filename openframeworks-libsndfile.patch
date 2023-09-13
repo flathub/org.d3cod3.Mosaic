@@ -1,0 +1,63 @@
+From 04a9a46b4ef07b74c56d0fe0a325872651ffbd38 Mon Sep 17 00:00:00 2001
+From: ofTheo <theo@openframeworks.cc>
+Date: Wed, 6 Apr 2022 16:05:46 -0700
+Subject: [PATCH 1/2] fix for different struct type for libsndfile
+
+---
+ libs/openFrameworks/sound/ofOpenALSoundPlayer.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libs/openFrameworks/sound/ofOpenALSoundPlayer.h b/libs/openFrameworks/sound/ofOpenALSoundPlayer.h
+index 042f7b35442..ad6bb860c3c 100644
+--- a/libs/openFrameworks/sound/ofOpenALSoundPlayer.h
++++ b/libs/openFrameworks/sound/ofOpenALSoundPlayer.h
+@@ -14,8 +14,8 @@ typedef unsigned int ALuint;
+ #include "kiss_fftr.h"
+ 
+ 
+-
+-typedef	struct SNDFILE_tag	SNDFILE ;
++//defined by libsndfile in .cpp
++struct SNDFILE;
+ 
+ 
+ #ifdef OF_USING_MPG123
+
+From 4c0eaf9aaa820f0c2183ba8b3674093222873981 Mon Sep 17 00:00:00 2001
+From: ofTheo <theo@openframeworks.cc>
+Date: Wed, 6 Apr 2022 16:17:35 -0700
+Subject: [PATCH 2/2] better fix?
+
+---
+ libs/openFrameworks/sound/ofOpenALSoundPlayer.cpp | 1 -
+ libs/openFrameworks/sound/ofOpenALSoundPlayer.h   | 5 +----
+ 2 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/libs/openFrameworks/sound/ofOpenALSoundPlayer.cpp b/libs/openFrameworks/sound/ofOpenALSoundPlayer.cpp
+index 71caf42d829..39146d7d619 100644
+--- a/libs/openFrameworks/sound/ofOpenALSoundPlayer.cpp
++++ b/libs/openFrameworks/sound/ofOpenALSoundPlayer.cpp
+@@ -7,7 +7,6 @@
+ #include "glm/common.hpp"
+ #include "ofLog.h"
+ #include "ofEvents.h"
+-#include <sndfile.h>
+ 
+ #if defined (TARGET_OF_IOS) || defined (TARGET_OSX)
+ #include <OpenAL/al.h>
+diff --git a/libs/openFrameworks/sound/ofOpenALSoundPlayer.h b/libs/openFrameworks/sound/ofOpenALSoundPlayer.h
+index ad6bb860c3c..80df4f90cb6 100644
+--- a/libs/openFrameworks/sound/ofOpenALSoundPlayer.h
++++ b/libs/openFrameworks/sound/ofOpenALSoundPlayer.h
+@@ -12,10 +12,7 @@ typedef unsigned int ALuint;
+ 
+ #include "kiss_fft.h"
+ #include "kiss_fftr.h"
+-
+-
+-//defined by libsndfile in .cpp
+-struct SNDFILE;
++#include <sndfile.h>
+ 
+ 
+ #ifdef OF_USING_MPG123

@@ -324,6 +324,8 @@ modules:
       env:
         CC: clang
         CXX: clang++
+    config-opts:
+      - -DBUILD_TESTING=OFF
     sources:
       - type: git
         url: https://github.com/apple/swift-corelibs-libdispatch
@@ -331,6 +333,8 @@ modules:
       - type: patch
         path: avoid-kqueue.patch
         strip-components: 0
+      - type: patch
+        path: libdispatch-unused-variable.patch
   - name: openframeworks
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
@@ -360,8 +364,8 @@ modules:
         path: "org.d3cod3.Mosaic.desktop"
 # openframeworks
       - type: archive
-        url: https://openframeworks.cc/versions/v0.11.0/of_v0.11.0_linux64gcc6_release.tar.gz
-        sha256: 513cee3ce081e79fdc1a942af09869145fff3d7addeee0a76cef26fbc3ae69b1
+        url: https://openframeworks.cc/versions/v0.11.2/of_v0.11.2_linux64gcc6_release.tar.gz
+        sha256: 9907beae6c786751470f5a55f1273280f3c240b4a93ce0c4a32c4a62b401470c
       - type: shell
         commands:
           - sed -e '/GL\/glext.h/ s/^#*/\/\//' -i libs/openFrameworks/utils/ofConstants.h
@@ -371,11 +375,7 @@ modules:
           - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv\s/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4 /g' addons/ofxOpenCv/addon_config.mk
           - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv$/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4/g' addons/ofxOpenCv/addon_config.mk
       - type: patch
-        path: openal_fix.patch
-        strip-components: 0
-      - type: patch
-        path: make4.3.patch
-        strip-components: 0
+        path: openframeworks-libsndfile.patch
 # addons
       - type: git
         url: https://github.com/d3cod3/ofxAudioAnalyzer.git
@@ -389,6 +389,8 @@ modules:
         # tag:
         commit: 3b4248d7772379aedbe7088ac239b9d376a7df55
         dest: addons/ofxAudioFile
+      - type: patch
+        path: ofxAudioFile-missing-header.patch
       - type: git
         url: https://github.com/d3cod3/ofxBTrack.git
         # branch: master
@@ -508,6 +510,8 @@ modules:
         tag: 0.5.0
         commit: a9e3790422e664bd36297d2a533e4d6b99e0b678
         dest: addons/ofxVisualProgramming
+      - type: patch
+        path: ofxVisualProgramming-missing-header.patch
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
         # branch: master

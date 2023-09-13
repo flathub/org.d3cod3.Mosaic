@@ -1,0 +1,25 @@
+From 56a3fdf7f167c9896be3f1ac67792a529455b303 Mon Sep 17 00:00:00 2001
+From: bbhtt <bbhtt.zn0i8@slmail.me>
+Date: Wed, 13 Sep 2023 12:38:15 +0530
+Subject: [PATCH] Fix build
+
+Pick https://github.com/apple/swift-corelibs-libdispatch/commit/915f25141a7c57b6a2a3bc8697572644af181ec5
+---
+ src/shims/yield.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/shims/yield.c b/src/shims/yield.c
+index 43f0017..1a2bd5e 100644
+--- a/src/shims/yield.c
++++ b/src/shims/yield.c
+@@ -25,6 +25,7 @@ static void *
+ __DISPATCH_WAIT_FOR_ENQUEUER__(void **ptr)
+ {
+ 	int spins = 0;
++	(void)spins;
+ 	void *value;
+ 	while ((value = os_atomic_load(ptr, relaxed)) == NULL) {
+ 		_dispatch_preemption_yield(++spins);
+--
+2.41.0
+

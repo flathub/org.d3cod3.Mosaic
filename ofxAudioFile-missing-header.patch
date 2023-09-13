@@ -1,0 +1,24 @@
+From d97dc2871f597ea05d3d13347c9c05259bc8fbef Mon Sep 17 00:00:00 2001
+From: bbhtt <bbhtt.zn0i8@slmail.me>
+Date: Wed, 13 Sep 2023 14:02:25 +0530
+Subject: [PATCH] Fix missing header
+
+---
+ addons/ofxAudioFile/src/ofxAudioFile.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/addons/ofxAudioFile/src/ofxAudioFile.h b/addons/ofxAudioFile/src/ofxAudioFile.h
+index ae5defa..1070e15 100644
+--- a/addons/ofxAudioFile/src/ofxAudioFile.h
++++ b/addons/ofxAudioFile/src/ofxAudioFile.h
+@@ -4,6 +4,7 @@
+
+ #include <iostream>
+ #include <string>
++#include <cstdint>
+
+ class ofxAudioFile {
+
+--
+2.41.0
+

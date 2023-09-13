@@ -1,0 +1,22 @@
+From 1a03bcf9f4a4e19121c9f5327220c7bb0b93c9df Mon Sep 17 00:00:00 2001
+From: d3cod3 <n3m3da@d3cod3.org>
+Date: Sun, 1 Jan 2023 10:35:01 +0100
+Subject: [PATCH] fix windows compile
+
+---
+ addons/ofxVisualProgramming/src/core/ofxVPHasUid.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/addons/ofxVisualProgramming/src/core/ofxVPHasUid.h b/addons/ofxVisualProgramming/src/core/ofxVPHasUid.h
+index a4194032..6c8a6409 100644
+--- a/addons/ofxVisualProgramming/src/core/ofxVPHasUid.h
++++ b/addons/ofxVisualProgramming/src/core/ofxVPHasUid.h
+@@ -4,6 +4,8 @@
+ #include <string>
+ #include <map>
+ #include <iostream>
++#include <algorithm>
++#include <ctype.h>
+ #include "ofLog.h"
+
+ class ofxVPHasUID {
