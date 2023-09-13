@@ -8,10 +8,8 @@
   <summary>An openFrameworks based Visual Patching Creative-Coding Platform</summary>
 
   <description>
-    <p>
-      Mosaic is a multi-platform livecoding programming/patching environment for creating real-time audio-visual compositions. It's principally designed for live needs, as can be teaching in class, live performing in an algorave, or running a generative audio-visual installation in a museum. It aims to empower artists, creative coders, scenographers and other creative technologists in their creative workflow
-    </p>
-    
+    <p>Mosaic is a multi-platform livecoding programming/patching environment for creating real-time audio-visual compositions. It's principally designed for live needs, as can be teaching in class, live performing in an algorave, or running a generative audio-visual installation in a museum. It aims to empower artists, creative coders, scenographers and other creative technologists in their creative workflow</p>
+
   </description>
 
   <launchable type="desktop-id">org.d3cod3.Mosaic.desktop</launchable>
@@ -44,6 +42,7 @@
   <releases>
     <release version="0.5.0" date="2021-09-04">
       <description>
+        <p>Changes: </p>
         <ul>
           <li>added texture mixer object to mix up to 32 texture using alpha</li>
           <li>Updated ofxAddonsTool to last commit</li>
