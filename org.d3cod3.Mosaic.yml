@@ -54,10 +54,6 @@ modules:
       - "-DBUILD_MANS=false"
       - "-DBUILD_HTML_MANS=false"
       - "-DNO_SETCAP_OR_SUID=false"
-      - "-DSETCAP_OR_SUID_ARPING=false"
-      - "-DSETCAP_OR_SUID_CLOCKDIFF=false"
-      - "-DSETCAP_OR_SUID_PING=false"
-      - "-DSETCAP_OR_SUID_TRACEROUTE6=false"
       - "-DUSE_GETTEXT=false"
     sources:
       - type: archive
