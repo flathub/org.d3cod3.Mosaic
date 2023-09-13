@@ -47,7 +47,7 @@
           <li>- FLOSS, Free/Libre and Open Source Software</li>
           - cross-platform
           - openGL 4.1, glsl shading languages from 150 to 410
-          - plugin injection capable, see [Mosaic Plugin](https://github.com/d3cod3/Mosaic-Plugin)
+          - plugin injection capable
           - multi-threaded
           - ImGui based docking GUI interface
           - non-blocking system dialogs
@@ -57,7 +57,7 @@
           - non-linear interactive graphical timeline
           - warping integrated on output window object
           - mapmap style projection mapping module
-          - [tracy profiler](https://github.com/wolfpld/tracy) for solid debug and profiling
+          - tracy profiler for solid debug and profiling
         </ul>
       </description>
     </release>
