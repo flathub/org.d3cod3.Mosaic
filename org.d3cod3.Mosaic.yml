@@ -110,7 +110,7 @@ modules:
     sources:
       - type: archive
         url: "https://sourceforge.net/projects/freeglut/files/freeglut/3.2.1/freeglut-3.2.1.tar.gz"
-        md5: cd5c670c1086358598a6d4a9d166949d
+        sha256: d4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68
 
   - name: libxmu
     sources:
