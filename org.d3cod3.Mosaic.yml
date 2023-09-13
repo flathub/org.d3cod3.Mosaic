@@ -129,6 +129,8 @@ modules:
 
   - name: freeimage
     buildsystem: simple
+    build-options:
+      cxxflags: -std=c++14
     build-commands:
       - sh gensrclist.sh
       - sh genfipsrclist.sh
