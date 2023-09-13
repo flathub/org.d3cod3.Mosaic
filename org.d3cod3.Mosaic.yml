@@ -486,7 +486,7 @@ modules:
         url: https://github.com/d3cod3/ofxPDSP.git
         # branch: master
         # tag:
-        commit: a64410c1dd0231de2a3fde6c81da6ea9043b3d11
+        commit: e8f6d447c0f3a53e0dd69ea26afdcba1f7edeeff
         dest: addons/ofxPDSP
       - type: git
         url: https://github.com/d3cod3/ofxPython.git
