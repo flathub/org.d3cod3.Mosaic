@@ -229,7 +229,7 @@ modules:
     - "/lib/pkgconfig"
 
   - name: liburiparser
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     config-opts:
     - "-DURIPARSER_BUILD_DOCS=OFF"
     - "-DURIPARSER_BUILD_TESTS=OFF"
@@ -251,24 +251,21 @@ modules:
       sha256: 55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a
 
   - name: poco
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     sources:
     - type: archive
       url: https://github.com/pocoproject/poco/archive/poco-1.12.4-release.tar.gz
       sha256: 71ef96c35fced367d6da74da294510ad2c912563f12cd716ab02b6ed10a733ef
+
   - name: libdaemon
     buildsystem: autotools
-    config-opts:
-      - "--prefix=/app"
     sources:
-      - type: git
-        url: git://git.0pointer.net/libdaemon.git
-        commit: 9fcc28e0e8f84968d1fb8b6d544a42efb13803ec
+      - type: archive
+        url: http://0pointer.de/lennart/projects/libdaemon/libdaemon-0.14.tar.gz
+        sha256: fd23eb5f6f986dcc7e708307355ba3289abe03cc381fc47a80bca4a50aa6b834
 
   - name: libevent
     buildsystem: autotools
-    config-opts:
-      - "--prefix=/app"
     sources:
       - type: git
         url: https://github.com/libevent/libevent
@@ -277,7 +274,6 @@ modules:
   - name: avahi
     buildsystem: autotools
     config-opts:
-      - "--prefix=/app"
       - "--with-distro=none"
       - "--disable-gtk3"
       - "--disable-mono"
