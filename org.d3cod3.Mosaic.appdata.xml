@@ -9,7 +9,22 @@
 
   <description>
     <p>Mosaic is a multi-platform livecoding programming/patching environment for creating real-time audio-visual compositions. It's principally designed for live needs, as can be teaching in class, live performing in an algorave, or running a generative audio-visual installation in a museum. It aims to empower artists, creative coders, scenographers and other creative technologists in their creative workflow</p>
-    
+    <p> </p>
+    <ul>
+      <li>FLOSS, Free/Libre and Open Source Software</li>
+      <li>cross-platform</li>
+      <li>openGL 4.1, glsl shading languages from 150 to 410</li>
+      <li>plugin injection capable</li>
+      <li>multi-threaded</li>
+      <li>ImGui based docking GUI interface</li>
+      <li>non-blocking system dialogs</li>
+      <li>lua/glsl/bash live-coding</li>
+      <li>pure data live-patching</li>
+      <li>good selection of audio synthesis modules</li>
+      <li>non-linear interactive graphical timeline</li>
+      <li>warping integrated on output window object</li>
+      <li>mapmap style projection mapping module</li>
+    </ul>
   </description>
 
   <launchable type="desktop-id">org.d3cod3.Mosaic.desktop</launchable>
@@ -42,23 +57,7 @@
   <releases>
     <release version="0.6.6" date="2023-09-11">
       <description>
-      <p>Changes: </p>
-        <ul>
-          <li>- FLOSS, Free/Libre and Open Source Software</li>
-          - cross-platform
-          - openGL 4.1, glsl shading languages from 150 to 410
-          - plugin injection capable
-          - multi-threaded
-          - ImGui based docking GUI interface
-          - non-blocking system dialogs
-          - lua/glsl/bash live-coding
-          - pure data live-patching
-          - good selection of audio synthesis modules
-          - non-linear interactive graphical timeline
-          - warping integrated on output window object
-          - mapmap style projection mapping module
-          - tracy profiler for solid debug and profiling
-        </ul>
+        
       </description>
     </release>
   </releases>
