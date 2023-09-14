@@ -9,7 +9,7 @@
 
   <description>
     <p>Mosaic is a multi-platform livecoding programming/patching environment for creating real-time audio-visual compositions. It's principally designed for live needs, as can be teaching in class, live performing in an algorave, or running a generative audio-visual installation in a museum. It aims to empower artists, creative coders, scenographers and other creative technologists in their creative workflow</p>
-    <br>
+    <p> </p>
     <ul>
       <li>FLOSS, Free/Libre and Open Source Software</li>
       <li>cross-platform</li>
