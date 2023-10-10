@@ -375,6 +375,8 @@ modules:
       #  strip-components: 0
       - type: patch
         path: openframeworks-libsndfile.patch
+      - type: patch
+        path: openframeworks-gstreamer1.20.patch
         #path: make4.3.patch
         #strip-components: 0
 # addons
