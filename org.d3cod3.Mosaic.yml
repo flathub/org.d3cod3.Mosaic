@@ -368,10 +368,10 @@ modules:
       #  commands: 
       #    - sed -e '/GL\/glext.h/ s/^#*/\/\//' -i libs/openFrameworks/utils/ofConstants.h
 # use openCV 4
-      #- type: shell
-      #  commands:
-      #    - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv\s/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4 /g' addons/ofxOpenCv/addon_config.mk
-      #    - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv$/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4/g' addons/ofxOpenCv/addon_config.mk
+      ##- type: shell
+      ##  commands:
+      ##    - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv\s/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4 /g' addons/ofxOpenCv/addon_config.mk
+      ##    - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv$/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4/g' addons/ofxOpenCv/addon_config.mk
       #- type: patch
       #  path: openal_fix.patch
       #  strip-components: 0
