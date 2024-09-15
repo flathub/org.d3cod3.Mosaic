@@ -441,13 +441,13 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxInfiniteCanvas.git
         # branch: master
-        tag: 0.6.6
-        commit: 810664d7046901f3fb6b5d5627f618342acf7776
+        #tag: 0.6.6
+        commit: dc7415a24f1d69c85f75bbaf8a39f995472173e5
         dest: addons/ofxInfiniteCanvas
       - type: git
         url: https://github.com/danomatika/ofxLua.git
         #tag: 0.4.8
-        commit: f372b32d1deeccf55c20b00a3fc29ee7005507b3
+        commit: 0d554baed9fc08d40963e46e2b762d6644befe99
         dest: addons/ofxLua
       - type: git
         url: https://github.com/danomatika/ofxMidi.git
