@@ -8,7 +8,9 @@ command: mosaic
 finish-args:
   # X11 + XShm access
   - --share=ipc
-  - --socket=x11
+  #- --socket=x11
+  - --socket=fallback-x11
+  - --socket=wayland
   
   - --socket=pulseaudio
   # Needs access to webcams and so
@@ -334,6 +336,8 @@ modules:
   - name: openframeworks
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
+    build-options:
+      cxxflags: -std=c++14
     build-commands:
       - cd libs/openFrameworksCompiled/project && make -j$FLATPAK_BUILDER_N_JOBS
 #      - cd src/fftw3 && ./configure --prefix=`pwd` --enable-float --enable-sse2 --with-incoming-stack-boundary=2 --with-our-malloc16 --disable-shared --enable-static && make MAKEINFO=true -j$FLATPAK_BUILDER_N_JOBS
