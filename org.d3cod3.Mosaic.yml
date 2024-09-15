@@ -368,10 +368,10 @@ modules:
       #  commands: 
       #    - sed -e '/GL\/glext.h/ s/^#*/\/\//' -i libs/openFrameworks/utils/ofConstants.h
 # use openCV 4
-      ##- type: shell
-      ##  commands:
-      ##    - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv\s/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4 /g' addons/ofxOpenCv/addon_config.mk
-      ##    - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv$/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4/g' addons/ofxOpenCv/addon_config.mk
+      - type: shell
+        commands:
+          - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv\s/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4 /g' addons/ofxOpenCv/addon_config.mk
+          - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv$/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4/g' addons/ofxOpenCv/addon_config.mk
       #- type: patch
       #  path: openal_fix.patch
       #  strip-components: 0
@@ -403,10 +403,10 @@ modules:
         commit: 4f1a2940bd44fd423526517cb65779a072078882
         dest: addons/ofxChromaKeyShader
       - type: git
-        url: https://github.com/kylemcdonald/ofxCv.git
+        url: https://github.com/d3cod3/ofxCv.git
         # branch: master
-        # tag:
-        commit: 209a3986a8f8e1928c7a11f6e1c5d8ea5406e639
+        tag: 0.6.7
+        commit: c88fc52dad37bcf4a78f587a7288728dab2f0258
         dest: addons/ofxCv
       - type: git
         url: https://github.com/arturoc/ofxEasing.git
