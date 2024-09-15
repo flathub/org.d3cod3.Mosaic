@@ -488,7 +488,7 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
-        tag: 0.6.7
+        #tag: 0.6.7
         commit: cc250246312bf0eca15df15c8cc18a0f7109fe2e
         dest: addons/ofxVisualProgramming
       - type: git
