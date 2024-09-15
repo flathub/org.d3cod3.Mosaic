@@ -339,8 +339,8 @@ modules:
 #      - cd src/fftw3 && ./configure --prefix=`pwd` --enable-float --enable-sse2 --with-incoming-stack-boundary=2 --with-our-malloc16 --disable-shared --enable-static && make MAKEINFO=true -j$FLATPAK_BUILDER_N_JOBS
 #      - mkdir addons/ofxAudioAnalyzer/libs/fftw3f/lib/linux64
 #      - cp src/fftw3/.libs/libfftw3f.a addons/ofxAudioAnalyzer/libs/fftw3f/lib/linux64/
-      - cp addons/ofxNDI/libs/libndi/lib/x86_64-linux-gnu/libndi.so.3.7.1 /app/lib
-      - ln -s /app/lib/libndi.so.3.7.1 /app/lib/libndi.so.3
+#      - cp addons/ofxNDI/libs/libndi/lib/x86_64-linux-gnu/libndi.so.3.7.1 /app/lib
+#      - ln -s /app/lib/libndi.so.3.7.1 /app/lib/libndi.so.3
 #      - cd apps/d3cod3/Mosaic && make # one thread compile for error checking
       - cd apps/d3cod3/Mosaic && make -j$FLATPAK_BUILDER_N_JOBS
       # debug - cd apps/d3cod3/Mosaic && make CXXFLAGS='-g -O2' -j$FLATPAK_BUILDER_N_JOBS Debug
@@ -360,11 +360,13 @@ modules:
         path: "org.d3cod3.Mosaic.desktop"
 # openframeworks
       - type: archive
-        url: https://openframeworks.cc/versions/v0.11.2/of_v0.11.2_linux64gcc6_release.tar.gz
-        sha256: 9907beae6c786751470f5a55f1273280f3c240b4a93ce0c4a32c4a62b401470c
-      - type: shell
-        commands: 
-          - sed -e '/GL\/glext.h/ s/^#*/\/\//' -i libs/openFrameworks/utils/ofConstants.h
+        #url: https://openframeworks.cc/versions/v0.11.2/of_v0.11.2_linux64gcc6_release.tar.gz
+        #sha256: 9907beae6c786751470f5a55f1273280f3c240b4a93ce0c4a32c4a62b401470c
+        url: https://github.com/openframeworks/openFrameworks/releases/download/0.12.0/of_v0.12.0_linux64gcc6_release.tar.gz
+        sha256: 942cd299c903e0aeea5f05e429ab813702e0ba4f99a5a3d0e7c21e61be9b3b2b
+      #- type: shell
+      #  commands: 
+      #    - sed -e '/GL\/glext.h/ s/^#*/\/\//' -i libs/openFrameworks/utils/ofConstants.h
 # use openCV 4
       - type: shell
         commands:
@@ -373,10 +375,10 @@ modules:
       #- type: patch
       #  path: openal_fix.patch
       #  strip-components: 0
-      - type: patch
-        path: openframeworks-libsndfile.patch
-      - type: patch
-        path: openframeworks-gstreamer1.20.patch
+      #- type: patch
+      #  path: openframeworks-libsndfile.patch
+      #- type: patch
+      #  path: openframeworks-gstreamer1.20.patch
         #path: make4.3.patch
         #strip-components: 0
 # addons
@@ -415,8 +417,8 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxFFmpegRecorder.git
         # branch: master
-        tag: 0.6.6
-        commit: ce6721f1ccfa66a4a713b7d5ff2bfe4cc0b21a10
+        tag: 0.6.7
+        commit: 0773ca7620afdbc15a38a83d83ad424757fc4515
         dest: addons/ofxFFmpegRecorder
       - type: git
         url: https://github.com/kylemcdonald/ofxFft.git
@@ -459,12 +461,12 @@ modules:
         tag: 0.6.6
         commit: fcb4144231a2aaa9aae27cb5f8e98ba940d86839
         dest: addons/ofxMtlMapping2D
-      - type: git
-        url: https://github.com/d3cod3/ofxNDI.git
+      #- type: git
+      #  url: https://github.com/d3cod3/ofxNDI.git
         # branch: master
-        tag: 0.6.6
-        commit: d6d8bc011ab80f2bbd4145f9f39f789ee28e1367
-        dest: addons/ofxNDI
+      #  tag: 0.6.6
+      #  commit: d6d8bc011ab80f2bbd4145f9f39f789ee28e1367
+      #  dest: addons/ofxNDI
       - type: git
         url: https://github.com/danomatika/ofxPd.git
         # branch: master
@@ -486,8 +488,8 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
-        tag: 0.6.6
-        commit: b79421f5d96058bf8cc1ba1ca15e02493956913d
+        tag: 0.6.7
+        commit: 8dd2f22c56d9586587006d100a1ef65583e7d13f
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -500,7 +502,7 @@ modules:
         url: https://github.com/d3cod3/Mosaic.git
         # tag: 0.6.6
         # branch: master
-        commit: ee10c2eb6463957abf6e991ce19ee98f6f2f90cf
+        commit: 2292b8b20e4ef46d215a8cba862783561ba52402
         dest: apps/d3cod3/Mosaic
 
      
