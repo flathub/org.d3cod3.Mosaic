@@ -493,7 +493,7 @@ modules:
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
         #tag: 0.6.7
-        commit: 146314ef16cb6bc287b7b2e6bfa0e3189824ba90
+        commit: afe63b81542665c1439497f41385cd96ce10e830
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
