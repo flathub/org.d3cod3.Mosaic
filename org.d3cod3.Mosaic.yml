@@ -370,7 +370,7 @@ modules:
         #url: https://github.com/openframeworks/openFrameworks/releases/download/0.12.0/of_v0.12.0_linux64gcc6_release.tar.gz
         #sha256: 942cd299c903e0aeea5f05e429ab813702e0ba4f99a5a3d0e7c21e61be9b3b2b
         url: https://www.d3cod3.org/downloads/of_v0.12.0_linux64gcc6_release_Mosaic.tar.gz
-        sha256: 29593c0be1a92509dfedb0d529a7dbaf3d88926debe33f8ebbdc0c7255ccfce3
+        sha256: 0ae8198c5063781e990f996872af8c7f412019d49c6980b3eb066351050a1745
       #- type: shell
       #  commands: 
       #    - sed -e '/GL\/glext.h/ s/^#*/\/\//' -i libs/openFrameworks/utils/ofConstants.h
