@@ -338,8 +338,6 @@ modules:
   - name: openframeworks
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
-    build-options:
-      cxxflags: -std=c++17
     build-commands:
       - cd libs/openFrameworksCompiled/project && make -j$FLATPAK_BUILDER_N_JOBS
 #      - cd src/fftw3 && ./configure --prefix=`pwd` --enable-float --enable-sse2 --with-incoming-stack-boundary=2 --with-our-malloc16 --disable-shared --enable-static && make MAKEINFO=true -j$FLATPAK_BUILDER_N_JOBS
@@ -495,7 +493,7 @@ modules:
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
         #tag: 0.6.7
-        commit: 22f04d6f11e45713690e8971be451896904a7bfb
+        commit: 146314ef16cb6bc287b7b2e6bfa0e3189824ba90
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
