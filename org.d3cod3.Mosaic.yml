@@ -339,6 +339,7 @@ modules:
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
     build-commands:
+      - sed -e '/PLATFORM_LDFLAGS += -lstdc++fs/s/^/#/g' -i libs/openFrameworksCompiled/project/makefileCommon/config.linux.common.mk
       - cd libs/openFrameworksCompiled/project && make -j$FLATPAK_BUILDER_N_JOBS
 #      - cd src/fftw3 && ./configure --prefix=`pwd` --enable-float --enable-sse2 --with-incoming-stack-boundary=2 --with-our-malloc16 --disable-shared --enable-static && make MAKEINFO=true -j$FLATPAK_BUILDER_N_JOBS
 #      - mkdir addons/ofxAudioAnalyzer/libs/fftw3f/lib/linux64
@@ -493,7 +494,7 @@ modules:
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
         #tag: 0.6.7
-        commit: afe63b81542665c1439497f41385cd96ce10e830
+        commit: 488f983119bfed4b33b4b2b8f489f6ee789f2b17
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
