@@ -338,8 +338,6 @@ modules:
   - name: openframeworks
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
-    build-options:
-      cxxflags: -std=c++17
     build-commands:
       - cd libs/openFrameworksCompiled/project && make -j$FLATPAK_BUILDER_N_JOBS
 #      - cd src/fftw3 && ./configure --prefix=`pwd` --enable-float --enable-sse2 --with-incoming-stack-boundary=2 --with-our-malloc16 --disable-shared --enable-static && make MAKEINFO=true -j$FLATPAK_BUILDER_N_JOBS
@@ -464,8 +462,8 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxMtlMapping2D.git
         # branch: master
-        tag: 0.6.6
-        commit: fcb4144231a2aaa9aae27cb5f8e98ba940d86839
+        #tag: 0.6.6
+        commit: fbd5f9794425c136380dda0a83b2b149ea9b23b2
         dest: addons/ofxMtlMapping2D
       #- type: git
       #  url: https://github.com/d3cod3/ofxNDI.git
@@ -488,8 +486,8 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxTimeline.git
         # branch: master
-        tag: 0.6.6
-        commit: 09a5acf8a950553a30e6ae0ac624a1615b5bf860
+        #tag: 0.6.6
+        commit: 8415b2112a40dee31af6e5e392dcaf43eed35b43
         dest: addons/ofxTimeline
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
