@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2023 Emanuele Mazza aka n3m3da <n3m3da@d3cod3.org> -->
+<!-- Copyright 2024 Emanuele Mazza aka n3m3da <n3m3da@d3cod3.org> -->
 <component type="desktop-application">
   <id>org.d3cod3.Mosaic</id>
   <metadata_license>FSFAP</metadata_license>
   <project_license>MIT</project_license>
   <name>Mosaic</name>
   <summary>An openFrameworks based Visual Patching Creative-Coding Platform</summary>
+  <developer id="org.d3cod3">
+    <name>n3m3da</name>
+  </developer>
 
   <description>
     <p>Mosaic is a multi-platform livecoding programming/patching environment for creating real-time audio-visual compositions. It's principally designed for live needs, as can be teaching in class, live performing in an algorave, or running a generative audio-visual installation in a museum. It aims to empower artists, creative coders, scenographers and other creative technologists in their creative workflow</p>
-    <p> </p>
     <ul>
       <li>FLOSS, Free/Libre and Open Source Software</li>
       <li>cross-platform</li>
@@ -32,18 +34,23 @@
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/d3cod3/Mosaic/master/process/img/28_transparent_machines04.jpg</image>
+      <caption>Transparent Machines</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/d3cod3/Mosaic/master/process/img/29_1979.jpg</image>
+      <caption>29 1979</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/d3cod3/Mosaic/master/process/img/25_transparent_machines.jpg</image>
+      <caption>Transparent Machines 2</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/d3cod3/Mosaic/master/process/img/23_helloSonogram.jpg</image>
+      <caption>Hello Sonogram</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/d3cod3/Mosaic/master/process/img/22_Ry_ofLoffler.jpg</image>
+      <caption>Ry ofLoffler</caption>
     </screenshot>
   </screenshots>
 
@@ -55,9 +62,9 @@
   </provides>
 
   <releases>
-    <release version="0.6.6" date="2023-09-11">
+    <release version="0.6.6" date="2024-09-16">
       <description>
-        
+        https://github.com/d3cod3/Mosaic/releases/tag/0.6.6
       </description>
     </release>
   </releases>

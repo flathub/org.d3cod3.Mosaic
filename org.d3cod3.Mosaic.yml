@@ -3,13 +3,17 @@ runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm16
+  - org.freedesktop.Sdk.Extension.llvm18
 command: mosaic
 finish-args:
   # X11 + XShm access
   - --share=ipc
-  - --socket=x11
-  
+  #- --socket=x11
+  # overrides x11 socket permission
+  - --socket=fallback-x11
+  # Wayland access
+  - --socket=wayland
+  # Audio
   - --socket=pulseaudio
   # Needs access to webcams and so
   - --device=all
@@ -335,12 +339,13 @@ modules:
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
     build-commands:
+      #- sed -i '/#define OF_USING_STD_FS 1/c\#define OF_USING_STD_FS 0' libs/openFrameworks/utils/ofConstants.h
       - cd libs/openFrameworksCompiled/project && make -j$FLATPAK_BUILDER_N_JOBS
 #      - cd src/fftw3 && ./configure --prefix=`pwd` --enable-float --enable-sse2 --with-incoming-stack-boundary=2 --with-our-malloc16 --disable-shared --enable-static && make MAKEINFO=true -j$FLATPAK_BUILDER_N_JOBS
 #      - mkdir addons/ofxAudioAnalyzer/libs/fftw3f/lib/linux64
 #      - cp src/fftw3/.libs/libfftw3f.a addons/ofxAudioAnalyzer/libs/fftw3f/lib/linux64/
-      - cp addons/ofxNDI/libs/libndi/lib/x86_64-linux-gnu/libndi.so.3.7.1 /app/lib
-      - ln -s /app/lib/libndi.so.3.7.1 /app/lib/libndi.so.3
+#      - cp addons/ofxNDI/libs/libndi/lib/x86_64-linux-gnu/libndi.so.3.7.1 /app/lib
+#      - ln -s /app/lib/libndi.so.3.7.1 /app/lib/libndi.so.3
 #      - cd apps/d3cod3/Mosaic && make # one thread compile for error checking
       - cd apps/d3cod3/Mosaic && make -j$FLATPAK_BUILDER_N_JOBS
       # debug - cd apps/d3cod3/Mosaic && make CXXFLAGS='-g -O2' -j$FLATPAK_BUILDER_N_JOBS Debug
@@ -360,11 +365,15 @@ modules:
         path: "org.d3cod3.Mosaic.desktop"
 # openframeworks
       - type: archive
-        url: https://openframeworks.cc/versions/v0.11.2/of_v0.11.2_linux64gcc6_release.tar.gz
-        sha256: 9907beae6c786751470f5a55f1273280f3c240b4a93ce0c4a32c4a62b401470c
-      - type: shell
-        commands: 
-          - sed -e '/GL\/glext.h/ s/^#*/\/\//' -i libs/openFrameworks/utils/ofConstants.h
+        #url: https://openframeworks.cc/versions/v0.11.2/of_v0.11.2_linux64gcc6_release.tar.gz
+        #sha256: 9907beae6c786751470f5a55f1273280f3c240b4a93ce0c4a32c4a62b401470c
+        #url: https://github.com/openframeworks/openFrameworks/releases/download/0.12.0/of_v0.12.0_linux64gcc6_release.tar.gz
+        #sha256: 942cd299c903e0aeea5f05e429ab813702e0ba4f99a5a3d0e7c21e61be9b3b2b
+        url: https://www.d3cod3.org/downloads/of_v0.12.0_linux64gcc6_release_Mosaic.tar.gz
+        sha256: 0ae8198c5063781e990f996872af8c7f412019d49c6980b3eb066351050a1745
+      #- type: shell
+      #  commands: 
+      #    - sed -e '/GL\/glext.h/ s/^#*/\/\//' -i libs/openFrameworks/utils/ofConstants.h
 # use openCV 4
       - type: shell
         commands:
@@ -373,10 +382,10 @@ modules:
       #- type: patch
       #  path: openal_fix.patch
       #  strip-components: 0
-      - type: patch
-        path: openframeworks-libsndfile.patch
-      - type: patch
-        path: openframeworks-gstreamer1.20.patch
+      #- type: patch
+      #  path: openframeworks-libsndfile.patch
+      #- type: patch
+      #  path: openframeworks-gstreamer1.20.patch
         #path: make4.3.patch
         #strip-components: 0
 # addons
@@ -401,10 +410,10 @@ modules:
         commit: 4f1a2940bd44fd423526517cb65779a072078882
         dest: addons/ofxChromaKeyShader
       - type: git
-        url: https://github.com/kylemcdonald/ofxCv.git
+        url: https://github.com/d3cod3/ofxCv.git
         # branch: master
-        # tag:
-        commit: 209a3986a8f8e1928c7a11f6e1c5d8ea5406e639
+        tag: 0.6.7
+        commit: c88fc52dad37bcf4a78f587a7288728dab2f0258
         dest: addons/ofxCv
       - type: git
         url: https://github.com/arturoc/ofxEasing.git
@@ -415,8 +424,8 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxFFmpegRecorder.git
         # branch: master
-        tag: 0.6.6
-        commit: ce6721f1ccfa66a4a713b7d5ff2bfe4cc0b21a10
+        tag: 0.6.7
+        commit: 0773ca7620afdbc15a38a83d83ad424757fc4515
         dest: addons/ofxFFmpegRecorder
       - type: git
         url: https://github.com/kylemcdonald/ofxFft.git
@@ -439,13 +448,13 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxInfiniteCanvas.git
         # branch: master
-        tag: 0.6.6
-        commit: 810664d7046901f3fb6b5d5627f618342acf7776
+        #tag: 0.6.6
+        commit: dc7415a24f1d69c85f75bbaf8a39f995472173e5
         dest: addons/ofxInfiniteCanvas
       - type: git
         url: https://github.com/danomatika/ofxLua.git
         #tag: 0.4.8
-        commit: f372b32d1deeccf55c20b00a3fc29ee7005507b3
+        commit: 0d554baed9fc08d40963e46e2b762d6644befe99
         dest: addons/ofxLua
       - type: git
         url: https://github.com/danomatika/ofxMidi.git
@@ -456,15 +465,15 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxMtlMapping2D.git
         # branch: master
-        tag: 0.6.6
-        commit: fcb4144231a2aaa9aae27cb5f8e98ba940d86839
+        #tag: 0.6.6
+        commit: fbd5f9794425c136380dda0a83b2b149ea9b23b2
         dest: addons/ofxMtlMapping2D
-      - type: git
-        url: https://github.com/d3cod3/ofxNDI.git
+      #- type: git
+      #  url: https://github.com/d3cod3/ofxNDI.git
         # branch: master
-        tag: 0.6.6
-        commit: d6d8bc011ab80f2bbd4145f9f39f789ee28e1367
-        dest: addons/ofxNDI
+      #  tag: 0.6.6
+      #  commit: d6d8bc011ab80f2bbd4145f9f39f789ee28e1367
+      #  dest: addons/ofxNDI
       - type: git
         url: https://github.com/danomatika/ofxPd.git
         # branch: master
@@ -480,14 +489,14 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxTimeline.git
         # branch: master
-        tag: 0.6.6
-        commit: 09a5acf8a950553a30e6ae0ac624a1615b5bf860
+        #tag: 0.6.6
+        commit: 8415b2112a40dee31af6e5e392dcaf43eed35b43
         dest: addons/ofxTimeline
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
-        tag: 0.6.6
-        commit: b79421f5d96058bf8cc1ba1ca15e02493956913d
+        #tag: 0.6.7
+        commit: 488f983119bfed4b33b4b2b8f489f6ee789f2b17
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -500,7 +509,7 @@ modules:
         url: https://github.com/d3cod3/Mosaic.git
         # tag: 0.6.6
         # branch: master
-        commit: ee10c2eb6463957abf6e991ce19ee98f6f2f90cf
+        commit: 2292b8b20e4ef46d215a8cba862783561ba52402
         dest: apps/d3cod3/Mosaic
 
      
