@@ -23,6 +23,8 @@ finish-args:
   - --filesystem=host
   # JACK support
   - --filesystem=xdg-run/pipewire-0
+  - --filesystem=xdg-pictures
+  - --filesystem=xdg-videos
 cleanup:
   - /lib/jack
   - /lib/libjack*
@@ -346,6 +348,16 @@ modules:
         url: https://github.com/FFmpeg/nv-codec-headers/archive/n9.0.18.1.tar.gz
         sha256: 6181a5dac66a6990aa3baf10a77ae677f372b9068be9ef73abfd37b73fb4c745
     cleanup: ['*'] 
+
+  - name: gstreamer
+    config-opts:
+      - -Dvaapi=enabled
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://gitlab.freedesktop.org/gstreamer/gstreamer
+        commit: "1.22.6"
+    cleanup: ['*']
  
   - name: openframeworks
     buildsystem: simple
