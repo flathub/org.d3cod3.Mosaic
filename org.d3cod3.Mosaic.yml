@@ -1,6 +1,6 @@
 app-id: org.d3cod3.Mosaic
 runtime: org.gnome.Platform
-runtime-version: 'stable'
+runtime-version: '45'
 sdk: org.gnome.Sdk
 #sdk-extensions:
 #  - org.freedesktop.Sdk.Extension.llvm18
