@@ -62,9 +62,9 @@
   </provides>
 
   <releases>
-    <release version="0.6.7" date="2024-09-16">
+    <release version="0.6.9" date="2024-11-11">
       <description>
-        https://github.com/d3cod3/Mosaic/releases/tag/0.6.7
+        https://github.com/d3cod3/Mosaic/releases/tag/0.6.9
       </description>
     </release>
   </releases>
