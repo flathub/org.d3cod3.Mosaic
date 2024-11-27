@@ -26,7 +26,7 @@
       <li>non-linear interactive graphical timeline</li>
       <li>warping integrated on output window object</li>
       <li>mapmap style projection mapping module</li>
-      <li>internal dht distributed chatroom, based on libdht/li>
+      <li>internal dht distributed chatroom, based on libdht</li>
     </ul>
   </description>
 
