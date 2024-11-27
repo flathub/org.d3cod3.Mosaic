@@ -487,8 +487,8 @@ modules:
       - type: archive
         #url: https://github.com/openframeworks/openFrameworks/releases/download/0.12.0/of_v0.12.0_linux64gcc6_release.tar.gz
         #sha256: 942cd299c903e0aeea5f05e429ab813702e0ba4f99a5a3d0e7c21e61be9b3b2b
-        url: https://www.d3cod3.org/downloads/of_v0.12.0_linux64gcc6_release_Mosaic.tar.xz
-        sha256: a9ca2f88db9d1fa223d78174a8ffdc2c95ad0324332f7c633ecc2863fdbed4c2
+        url: https://www.d3cod3.org/downloads/of_v0.12.0_linux64gcc6_release_Mosaic.tar.gz
+        sha256: 7b5958e98081ffd09f3fe70c80ec00a950bb5b9d8d038e1a8fc8d85f7c32214f
 # use openCV 4
       - type: shell
         commands:
@@ -598,8 +598,8 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxPDSP.git
         # branch: master
-        tag: 0.6.6
-        commit: 26ad90b3705df1f4cdb34f81c6a8159abe4ad564
+        #tag: 0.6.6
+        commit: 193a622e9249045013914791be9b21df49c269fe
         dest: addons/ofxPDSP
       - type: git
         url: https://github.com/d3cod3/ofxTimeline.git
@@ -611,7 +611,7 @@ modules:
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
         #tag: 0.6.7
-        commit: 53d83c1380472bca242c08b3ae05eafb96bbc0e9
+        commit: e97b9a4841614c1b357e248e34fc8cda7eb07479
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -624,7 +624,7 @@ modules:
         url: https://github.com/d3cod3/Mosaic.git
         # tag: 0.6.6
         # branch: master
-        commit: 2340e7129728305e60d40655bff5ed5c491e6bcc
+        commit: c04243bfb24d350fc60ae02a9cd5c0cece6acedb
         dest: apps/d3cod3/Mosaic
 
      
