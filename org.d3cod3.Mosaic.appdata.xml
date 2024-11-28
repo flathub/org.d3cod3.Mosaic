@@ -26,6 +26,7 @@
       <li>non-linear interactive graphical timeline</li>
       <li>warping integrated on output window object</li>
       <li>mapmap style projection mapping module</li>
+      <li>internal dht distributed chatroom, based on libdht</li>
     </ul>
   </description>
 
@@ -45,7 +46,7 @@
       <caption>Transparent Machines 2</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/d3cod3/Mosaic/master/process/img/23_helloSonogram.jpg</image>
+      <image>https://raw.githubusercontent.com/d3cod3/Mosaic/master/process/img/31_sintax03.jpg</image>
       <caption>Hello Sonogram</caption>
     </screenshot>
     <screenshot>
@@ -62,9 +63,9 @@
   </provides>
 
   <releases>
-    <release version="0.6.7" date="2024-09-16">
+    <release version="0.6.9" date="2024-11-27">
       <description>
-        https://github.com/d3cod3/Mosaic/releases/tag/0.6.7
+        https://github.com/d3cod3/Mosaic/releases/tag/0.6.9
       </description>
     </release>
   </releases>

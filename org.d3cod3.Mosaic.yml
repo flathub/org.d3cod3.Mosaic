@@ -319,7 +319,149 @@ modules:
         url: https://gitlab.freedesktop.org/gstreamer/gstreamer
         commit: "1.22.6"
     cleanup: ['*']
+
+  # libopendht dependencies
+  - name: argon2
+    no-autogen: true
+    make-args:
+      - PREFIX=/app
+      - LIBRARY_REL=lib
+      - OPTTARGET="no-opt"
+      - ARGON2_VERSION="20190702"
+    make-install-args:
+      - PREFIX=/app
+      - LIBRARY_REL=lib
+      - OPTTARGET="no-opt"
+      - ARGON2_VERSION="20190702"
+    sources:
+      - type: archive
+        url: https://github.com/P-H-C/phc-winner-argon2/archive/16d3df698db2486dde480b09a732bf9bf48599f9.tar.gz
+        sha256: fd7b52db579fe87b96503cc8e60f023f7c7d910bbff166801c4d37fe7bad000a
+    cleanup:
+      - /bin
+
+  - name: asio
+    config-opts:
+      - --prefix=/app
+      - --without-boost
+    sources:
+      - type: archive
+        url: https://sourceforge.net/projects/asio/files/asio/1.30.2%20%28Stable%29/asio-1.30.2.tar.bz2
+        sha256: 9f12cef05c0477eace9c68ccabd19f9e3a04b875d4768c323714cbd3a5fa3c2b
+    x-checker-data:
+      - type: anitya
+        project-id: 117
+        stable-only: true
+        url-template: https://sourceforge.net/projects/asio/files/asio/$version%20%28Stable%29/asio-$version.tar.bz2
  
+  - name: jsoncpp
+    buildsystem: meson
+    config-opts:
+      - -Dbuildtype=release
+      - -Dtests=false
+    sources:
+      - type: archive
+        url: https://github.com/open-source-parsers/jsoncpp/archive/1.9.5.tar.gz
+        sha256: f409856e5920c18d0c2fb85276e24ee607d2a09b5e7d5f0a371368903c275da2
+
+  - name: fmt
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_INSTALL_PREFIX=/app
+      - -DCMAKE_INSTALL_LIBDIR=/app/lib
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=ON
+      - -DFMT_TEST=Off
+    sources:
+      - type: archive
+        url: https://github.com/fmtlib/fmt/releases/download/10.2.1/fmt-10.2.1.zip
+        sha256: 312151a2d13c8327f5c9c586ac6cf7cddc1658e8f53edae0ec56509c8fa516c9
+    x-checker-data:
+      - type: anitya
+        project-id: 117
+        stable-only: true
+        url-template: https://github.com/fmtlib/fmt/releases/download/$version/fmt-$version.zip
+
+  - name: llhttp
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://github.com/nodejs/llhttp/archive/refs/tags/release/v9.2.1.tar.gz
+        sha256: 3c163891446e529604b590f9ad097b2e98b5ef7e4d3ddcf1cf98b62ca668f23e
+
+  - name: expected-lite
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DEXPECTED_LITE_OPT_BUILD_TESTS=OFF
+    sources:
+      - type: archive
+        url: https://github.com/martinmoene/expected-lite/archive/refs/tags/v0.8.0.tar.gz
+        sha256: 27649f30bd9d4fe7b193ab3eb6f78c64d0f585c24c085f340b4722b3d0b5e701
+
+  - name: restinio
+    subdir: dev
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DRESTINIO_TEST=Off
+      - -DRESTINIO_SAMPLE=Off
+      - -DRESTINIO_BENCHMARK=Off
+      - -DRESTINIO_WITH_SOBJECTIZER=Off
+      - -DRESTINIO_DEP_STANDALONE_ASIO=system
+      - -DRESTINIO_DEP_LLHTTP=system
+      - -DRESTINIO_DEP_FMT=system
+      - -DRESTINIO_DEP_EXPECTED_LITE=system
+    sources:
+      - type: archive
+        url: https://github.com/Stiffstream/restinio/releases/download/v.0.7.2/restinio-0.7.2.tar.bz2
+        sha256: 7ba3660ccf937eae55b35aba97d500e60a53baf3f2a24ee87a01b2ed6f2c08f4
+    x-checker-data:
+      - type: anitya
+        project-id: 242022
+        stable-only: true
+        url-template: https://github.com/Stiffstream/restinio/releases/download/v.$version/restinio-$version.tar.bz2
+
+  - name: msgpack-cxx
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_INSTALL_PREFIX=/app
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=ON
+      - -DMSGPACK_CXX17=ON
+      - -DMSGPACK_BUILD_DOCS=OFF
+      - -DMSGPACK_BUILD_EXAMPLES=OFF
+      - -DMSGPACK_USE_BOOST=OFF
+    sources:
+      - type: archive
+        url: https://github.com/msgpack/msgpack-c/releases/download/cpp-6.1.1/msgpack-cxx-6.1.1.tar.gz
+        sha256: 5fd555742e37bbd58d166199e669f01f743c7b3c6177191dd7b31fb0c37fa191
+
+  - name: liburing
+    sources:
+      - type: archive
+        url: https://github.com/axboe/liburing/archive/refs/tags/liburing-2.6.tar.gz
+        sha256: 682f06733e6db6402c1f904cbbe12b94942a49effc872c9e01db3d7b180917cc
+
+  - name: opendht
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DBUILD_TESTING=Off
+      - -DOPENDHT_DOCUMENTATION=Off
+      - -DOPENDHT_PROXY_CLIENT=On
+      - -DOPENDHT_PROXY_SERVER=On
+      - -DOPENDHT_PUSH_NOTIFICATIONS=On
+      - -DOPENDHT_TOOLS=Off
+      - -DLLHTTP_INCLUDE_DIR=/app/include
+      - -DLLHTTP_LIBRARY=/app/lib/libllhttp.so
+    sources:
+      - type: archive
+        url: https://github.com/savoirfairelinux/opendht/archive/972d4d28a11f1e642ba08ff6e6e81f488dcd0754.zip
+        sha256: 0ffb7b28033dc50f976133a6840f87b2e2959f72a9e33323c3b0bda717bd96de
+    x-checker-data:
+      - type: anitya
+        project-id: 12935
+        stable-only: true
+        url-template: https://github.com/savoirfairelinux/opendht/archive/refs/tags/v$version.tar.gz
+
   - name: openframeworks
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
@@ -343,12 +485,10 @@ modules:
         path: "org.d3cod3.Mosaic.desktop"
 # openframeworks
       - type: archive
-        #url: https://openframeworks.cc/versions/v0.11.2/of_v0.11.2_linux64gcc6_release.tar.gz
-        #sha256: 9907beae6c786751470f5a55f1273280f3c240b4a93ce0c4a32c4a62b401470c
         #url: https://github.com/openframeworks/openFrameworks/releases/download/0.12.0/of_v0.12.0_linux64gcc6_release.tar.gz
         #sha256: 942cd299c903e0aeea5f05e429ab813702e0ba4f99a5a3d0e7c21e61be9b3b2b
         url: https://www.d3cod3.org/downloads/of_v0.12.0_linux64gcc6_release_Mosaic.tar.gz
-        sha256: 0ae8198c5063781e990f996872af8c7f412019d49c6980b3eb066351050a1745
+        sha256: 7b5958e98081ffd09f3fe70c80ec00a950bb5b9d8d038e1a8fc8d85f7c32214f
 # use openCV 4
       - type: shell
         commands:
@@ -417,14 +557,14 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxImGui.git
         # branch: master
-        tag: 0.6.6
-        commit: 73cf7f142958c7588c82d5ddd59aba2b556e3daa
+        #tag: 0.6.6
+        commit: fe10ef70d3372d43024014e935332f770843aca4
         dest: addons/ofxImGui
       - type: git
         url: https://github.com/d3cod3/ofxInfiniteCanvas.git
         # branch: master
         #tag: 0.6.6
-        commit: e6d630ef6b321579dbcfa24278c1712e5cecc55d
+        commit: 7aa6145a9fc891eb819a071c7d27ed5f64263850
         dest: addons/ofxInfiniteCanvas
       - type: git
         url: https://github.com/danomatika/ofxLua.git
@@ -441,8 +581,14 @@ modules:
         url: https://github.com/d3cod3/ofxMtlMapping2D.git
         # branch: master
         #tag: 0.6.6
-        commit: 1e2ad5849a040066ae485cfda269a46ab32fad4d
+        commit: c87a0bc71153ffc0af4dbedb7b095b12efc7b475
         dest: addons/ofxMtlMapping2D
+      - type: git
+        url: https://github.com/d3cod3/ofxOpenDHT.git
+        # branch: master
+        #tag: 0.6.6
+        commit: d9b651b1bc203124c89576d0e75bf44c2fa56074
+        dest: addons/ofxOpenDHT
       - type: git
         url: https://github.com/danomatika/ofxPd.git
         # branch: master
@@ -452,20 +598,20 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxPDSP.git
         # branch: master
-        tag: 0.6.6
-        commit: 26ad90b3705df1f4cdb34f81c6a8159abe4ad564
+        #tag: 0.6.6
+        commit: 193a622e9249045013914791be9b21df49c269fe
         dest: addons/ofxPDSP
       - type: git
         url: https://github.com/d3cod3/ofxTimeline.git
         # branch: master
         #tag: 0.6.6
-        commit: 7f11e642497ea36673faac20434f4d81d976ad42
+        commit: 9a188198c69c44f28644e5f259814c18ae25a166
         dest: addons/ofxTimeline
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
         #tag: 0.6.7
-        commit: d7721702d4708c75e7181c3acd074758eccefe36
+        commit: e97b9a4841614c1b357e248e34fc8cda7eb07479
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -478,7 +624,7 @@ modules:
         url: https://github.com/d3cod3/Mosaic.git
         # tag: 0.6.6
         # branch: master
-        commit: 33de0e5a34f4920055cf5a5022b847b0cb0c1113
+        commit: c04243bfb24d350fc60ae02a9cd5c0cece6acedb
         dest: apps/d3cod3/Mosaic
 
      
