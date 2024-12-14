@@ -14,9 +14,9 @@
     <p>Mosaic is a multi-platform livecoding programming/patching environment for creating real-time audio-visual compositions. It's principally designed for live needs, as can be teaching in class, live performing in an algorave, or running a generative audio-visual installation in a museum. It aims to empower artists, creative coders, scenographers and other creative technologists in their creative workflow</p>
     <ul>
       <li>FLOSS, Free/Libre and Open Source Software</li>
-      <li>cross-platform</li>
+      <li>cross-platform, linux and macOS</li>
       <li>openGL 4.1, glsl shading languages from 150 to 410</li>
-      <li>plugin injection capable</li>
+      <li>plugin injection capability</li>
       <li>multi-threaded</li>
       <li>ImGui based docking GUI interface</li>
       <li>non-blocking system dialogs</li>
@@ -63,9 +63,9 @@
   </provides>
 
   <releases>
-    <release version="0.6.9" date="2024-11-27">
+    <release version="0.7.0" date="2024-12-14">
       <description>
-        https://github.com/d3cod3/Mosaic/releases/tag/0.6.9
+        https://github.com/d3cod3/Mosaic/releases/tag/0.7.0
       </description>
     </release>
   </releases>
