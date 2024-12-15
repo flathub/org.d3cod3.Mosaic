@@ -488,7 +488,7 @@ modules:
         #url: https://github.com/openframeworks/openFrameworks/releases/download/0.12.0/of_v0.12.0_linux64gcc6_release.tar.gz
         #sha256: 942cd299c903e0aeea5f05e429ab813702e0ba4f99a5a3d0e7c21e61be9b3b2b
         url: https://www.d3cod3.org/downloads/of_v0.12.0_linux64gcc6_release_Mosaic.tar.gz
-        sha256: 7b5958e98081ffd09f3fe70c80ec00a950bb5b9d8d038e1a8fc8d85f7c32214f
+        sha256: bc88fd8d359aa51f5224d5077d41f4c28d4e83c8f818fbffb3d073c8a76a8bc9
 # use openCV 4
       - type: shell
         commands:
@@ -518,12 +518,6 @@ modules:
         tag: 0.6.6
         commit: b4f2c82e9ae27017d603e41ebf45c06e3e294593
         dest: addons/ofxBTrack
-      - type: git
-        url: https://github.com/d3cod3/ofxChromaKeyShader.git
-        # branch: master
-        tag: 0.6.6
-        commit: 4f1a2940bd44fd423526517cb65779a072078882
-        dest: addons/ofxChromaKeyShader
       - type: git
         url: https://github.com/d3cod3/ofxCv.git
         # branch: master
@@ -564,7 +558,7 @@ modules:
         url: https://github.com/d3cod3/ofxInfiniteCanvas.git
         # branch: master
         #tag: 0.6.6
-        commit: 7aa6145a9fc891eb819a071c7d27ed5f64263850
+        commit: 223f96671377e91e397841cc3be49ba4fd3da963
         dest: addons/ofxInfiniteCanvas
       - type: git
         url: https://github.com/danomatika/ofxLua.git
@@ -587,7 +581,7 @@ modules:
         url: https://github.com/d3cod3/ofxOpenDHT.git
         # branch: master
         #tag: 0.6.6
-        commit: d9b651b1bc203124c89576d0e75bf44c2fa56074
+        commit: d59e0b08e4bf89ec28057d39eaa4c63ee62267d5
         dest: addons/ofxOpenDHT
       - type: git
         url: https://github.com/danomatika/ofxPd.git
@@ -611,7 +605,7 @@ modules:
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
         #tag: 0.6.7
-        commit: e97b9a4841614c1b357e248e34fc8cda7eb07479
+        commit: c7a5303ea8131a49dc22c4034e940834a5ef8d79
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -619,12 +613,12 @@ modules:
         tag: 0.6.6
         commit: e59a722f4c69fd94b0ad3fdc9172ea536673cf28
         dest: addons/ofxWarp
-# Mosaic
+        # Mosaic
       - type: git
         url: https://github.com/d3cod3/Mosaic.git
-        # tag: 0.6.6
+        # tag: 0.7.0
         # branch: master
-        commit: c04243bfb24d350fc60ae02a9cd5c0cece6acedb
+        commit: 6423bc93eaae0685c64b25d8ce560f80d8a72a50
         dest: apps/d3cod3/Mosaic
 
      
