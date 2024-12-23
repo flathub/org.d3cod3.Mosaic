@@ -617,7 +617,7 @@ modules:
         url: https://github.com/d3cod3/Mosaic.git
         # tag: 0.7.1
         # branch: master
-        commit: e864b8e70f046b4dd09c27ae0d0e6e4c0d51b950
+        commit: d1ad81af81c2fdb475634648e46641692e7ca67e
         dest: apps/d3cod3/Mosaic
 
      
