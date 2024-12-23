@@ -63,9 +63,9 @@
   </provides>
 
   <releases>
-    <release version="0.7.0" date="2024-12-14">
+    <release version="0.7.1" date="2024-12-23">
       <description>
-        https://github.com/d3cod3/Mosaic/releases/tag/0.7.0
+        https://github.com/d3cod3/Mosaic/releases/tag/0.7.1
       </description>
     </release>
   </releases>

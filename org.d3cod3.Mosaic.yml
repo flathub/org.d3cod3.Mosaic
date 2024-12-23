@@ -604,8 +604,7 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
-        #tag: 0.6.7
-        commit: c7a5303ea8131a49dc22c4034e940834a5ef8d79
+        commit: e86dbe2a69caaf4d410a01ede37f5792241377ac
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -616,9 +615,9 @@ modules:
         # Mosaic
       - type: git
         url: https://github.com/d3cod3/Mosaic.git
-        # tag: 0.7.0
+        # tag: 0.7.1
         # branch: master
-        commit: 6423bc93eaae0685c64b25d8ce560f80d8a72a50
+        commit: e864b8e70f046b4dd09c27ae0d0e6e4c0d51b950
         dest: apps/d3cod3/Mosaic
 
      
