@@ -573,12 +573,6 @@ modules:
         commit: 46dfefa6b6bf64a04b37ed9d0ecb3e275cb8035b
         dest: addons/ofxGLEditor
       - type: git
-        url: https://github.com/jeffcrouse/ofxJSON.git
-        # branch: master
-        # tag:
-        commit: 55a5825ddf510c991466f9d39d8e1d57b2bc2008
-        dest: addons/ofxJSON
-      - type: git
         url: https://github.com/d3cod3/ofxImGui.git
         # branch: master
         #tag: 0.6.6
@@ -599,7 +593,7 @@ modules:
         url: https://github.com/danomatika/ofxMidi.git
         # branch: master
         # tag: 0.4.8
-        commit: ccd63ca13cab263558409a09f49f08cee7b2d6da
+        commit: a66220dff158023c7538ffac050527a0ccb25029
         dest: addons/ofxMidi
       - type: git
         url: https://github.com/d3cod3/ofxMtlMapping2D.git
@@ -649,7 +643,7 @@ modules:
         # Mosaic
       - type: git
         url: https://github.com/d3cod3/Mosaic.git
-        # tag: 0.7.1
+        # tag: 0.7.2
         # branch: master
         commit: ee5fd613b60a484fce5d2ef8d38ca76eb9d5d591
         dest: apps/d3cod3/Mosaic
