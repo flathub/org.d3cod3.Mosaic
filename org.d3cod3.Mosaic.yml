@@ -613,8 +613,12 @@ modules:
         url: https://github.com/d3cod3/ofxPDSP.git
         # branch: master
         #tag: 0.6.6
-        commit: 193a622e9249045013914791be9b21df49c269fe
+        commit: ec1d97ab63be8f2d01c93c133c5929528d25334e
         dest: addons/ofxPDSP
+      - type: git
+        url: https://github.com/d3cod3/ofxScheme.git
+        commit: eeafba6901cba8e139871752ac14619ac718bd19
+        dest: addons/ofxScheme
       - type: git
         url: https://github.com/d3cod3/ofxTimeline.git
         # branch: master
@@ -624,7 +628,7 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
-        commit: e86dbe2a69caaf4d410a01ede37f5792241377ac
+        commit: 1521f4164f1c63de7f32a6a159fb13220888c4ec
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -637,7 +641,7 @@ modules:
         url: https://github.com/d3cod3/Mosaic.git
         # tag: 0.7.1
         # branch: master
-        commit: d1ad81af81c2fdb475634648e46641692e7ca67e
+        commit: ee5fd613b60a484fce5d2ef8d38ca76eb9d5d591
         dest: apps/d3cod3/Mosaic
 
      
