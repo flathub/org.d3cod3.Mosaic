@@ -478,7 +478,7 @@ modules:
     sources:
       - type: archive
         url: https://www.hboehm.info/gc/gc_source/gc.tar.gz
-        sha256: d0d0241c95996985d7ddda5622ac4b0b36e5a1cf4ecf36610dd2e2b92f774cf0
+        sha256: 7649020621cb26325e1fb5c8742590d92fb48ce5c259b502faf7d9fb5dabb160
   
   - name: guile
     sources:
