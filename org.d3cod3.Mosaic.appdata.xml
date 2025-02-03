@@ -18,9 +18,10 @@
       <li>openGL 4.1, glsl shading languages from 150 to 410</li>
       <li>plugin injection capability</li>
       <li>multi-threaded</li>
-      <li>ImGui based docking GUI interface</li>
+      <li>ImGui based docking and nodes GUI interface</li>
       <li>non-blocking system dialogs</li>
       <li>lua/glsl/bash live-coding</li>
+      <li>scheme live-coding (linux only)</li>
       <li>pure data live-patching</li>
       <li>good selection of audio synthesis modules</li>
       <li>non-linear interactive graphical timeline</li>
@@ -63,9 +64,9 @@
   </provides>
 
   <releases>
-    <release version="0.7.1" date="2024-12-23">
+    <release version="0.7.2" date="2024-12-23">
       <description>
-        https://github.com/d3cod3/Mosaic/releases/tag/0.7.1
+        https://github.com/d3cod3/Mosaic/releases/tag/0.7.2
       </description>
     </release>
   </releases>

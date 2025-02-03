@@ -462,6 +462,26 @@ modules:
         stable-only: true
         url-template: https://github.com/savoirfairelinux/opendht/archive/refs/tags/v$version.tar.gz
 
+  # libguile dependencies
+  - name: libunistring
+    sources:
+      - type: archive
+        url: http://ftp.gnu.org/gnu/libunistring/libunistring-0.9.6.tar.xz
+        sha256: 2df42eae46743e3f91201bf5c100041540a7704e8b9abfd57c972b2d544de41b
+  
+  - name: bdw-gc
+    sources:
+      - type: archive
+        url: http://www.hboehm.info/gc/gc_source/gc-7.6.0.tar.gz
+        sha256: a14a28b1129be90e55cd6f71127ffc5594e1091d5d54131528c24cd0c03b7d90
+  
+  - name: guile
+    sources:
+      - type: archive
+        url: https://ftp.gnu.org/gnu/guile/guile-2.0.13.tar.xz
+        sha256: 3744f2addc282a0de627aaef048f062982b44564d54ac31ff5217972529ed88b
+  
+  # openframeworks
   - name: openframeworks
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
