@@ -568,6 +568,11 @@ modules:
         commit: b5208b332efcb6172d19776f018468efaf9da8ea
         dest: addons/ofxFft
       - type: git
+        url: https://github.com/Akira-Hayasaka/ofxGLEditor
+        # branch: master
+        commit: 46dfefa6b6bf64a04b37ed9d0ecb3e275cb8035b
+        dest: addons/ofxGLEditor
+      - type: git
         url: https://github.com/jeffcrouse/ofxJSON.git
         # branch: master
         # tag:
