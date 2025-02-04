@@ -483,6 +483,8 @@ modules:
   
   - name: guile
     buildsystem: autotools
+    config-opts:
+      - "--prefix=/app"
     sources:
       - type: archive
         url: https://ftp.gnu.org/gnu/guile/guile-2.2.7.tar.xz
