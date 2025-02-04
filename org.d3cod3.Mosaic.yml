@@ -464,6 +464,7 @@ modules:
 
   # libguile dependencies
   - name: libatomic_ops
+    uildsystem: autotools
     sources:
       - type: archive
         url: https://github.com/ivmai/libatomic_ops/releases/download/v7.8.2/libatomic_ops-7.8.2.tar.gz
@@ -481,10 +482,18 @@ modules:
         sha256: 7649020621cb26325e1fb5c8742590d92fb48ce5c259b502faf7d9fb5dabb160
   
   - name: guile
+    buildsystem: autotools
     sources:
       - type: archive
-        url: https://ftp.gnu.org/gnu/guile/guile-2.0.13.tar.xz
-        sha256: 3744f2addc282a0de627aaef048f062982b44564d54ac31ff5217972529ed88b
+        url: https://ftp.gnu.org/gnu/guile/guile-2.2.7.tar.xz
+        sha256: cdf776ea5f29430b1258209630555beea6d2be5481f9da4d64986b077ff37504
+    x-checker-data:
+      - type: anitya
+        project-id: 1277
+        stable-only: true
+        url-template: https://ftp.gnu.org/gnu/guile/guile-$version.tar.xz
+    cleanup:
+      - /bin
   
   # Mosaic/openframeworks
   - name: openframeworks
