@@ -483,8 +483,9 @@ modules:
   
   - name: guile
     buildsystem: autotools
-    config-opts:
+    make-install-args:
       - "--prefix=/app"
+      - "--includedir=/app/include"
     sources:
       - type: archive
         url: https://ftp.gnu.org/gnu/guile/guile-2.2.7.tar.xz
@@ -632,7 +633,7 @@ modules:
         dest: addons/ofxPDSP
       - type: git
         url: https://github.com/d3cod3/ofxScheme.git
-        commit: 0dd78f84b445f7bbb123aa21588ba4c0ff9ae807
+        commit: bc4d96513f71faaba7b4a2398c6ffc0075984a8e
         dest: addons/ofxScheme
       - type: git
         url: https://github.com/d3cod3/ofxTimeline.git
