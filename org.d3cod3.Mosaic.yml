@@ -485,7 +485,6 @@ modules:
     buildsystem: autotools
     make-install-args:
       - "--prefix=/app"
-      - "--includedir=/app/include"
     sources:
       - type: archive
         url: https://ftp.gnu.org/gnu/guile/guile-2.2.7.tar.xz
@@ -504,7 +503,7 @@ modules:
     # subdir: libs/openFrameworksCompiled/project
     build-commands:
       - cd libs/openFrameworksCompiled/project && make -j$FLATPAK_BUILDER_N_JOBS
-      - cd apps/d3cod3/Mosaic && make -j$FLATPAK_BUILDER_N_JOBS
+      - cd apps/d3cod3/Mosaic && make -j$FLATPAK_BUILDER_N_JOBS -I/app/include/guile/2.2  
       # debug - cd apps/d3cod3/Mosaic && make CXXFLAGS='-g -O2' -j$FLATPAK_BUILDER_N_JOBS Debug
       - mkdir /app/mosaic
       - cp -ar * /app/mosaic
