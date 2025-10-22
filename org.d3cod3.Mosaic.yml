@@ -1,6 +1,6 @@
 app-id: org.d3cod3.Mosaic
 runtime: org.gnome.Platform
-runtime-version: '47'
+runtime-version: '48'
 sdk: org.gnome.Sdk
 #sdk-extensions:
 #  - org.freedesktop.Sdk.Extension.llvm18
@@ -464,7 +464,7 @@ modules:
 
   # libguile dependencies
   - name: libatomic_ops
-    uildsystem: autotools
+    buildsystem: autotools
     sources:
       - type: archive
         url: https://github.com/ivmai/libatomic_ops/releases/download/v7.8.2/libatomic_ops-7.8.2.tar.gz
