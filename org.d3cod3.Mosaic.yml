@@ -196,7 +196,7 @@ modules:
     - "/lib/pkgconfig"
 
   - name: liburiparser
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     config-opts:
     - "-DURIPARSER_BUILD_DOCS=OFF"
     - "-DURIPARSER_BUILD_TESTS=OFF"
@@ -218,7 +218,7 @@ modules:
       sha256: 55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a
 
   - name: poco
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     sources:
     - type: archive
       url: https://github.com/pocoproject/poco/archive/poco-1.12.4-release.tar.gz
