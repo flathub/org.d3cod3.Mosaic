@@ -1,6 +1,6 @@
 app-id: org.d3cod3.Mosaic
 runtime: org.gnome.Platform
-runtime-version: '46'
+runtime-version: '47'
 sdk: org.gnome.Sdk
 #sdk-extensions:
 #  - org.freedesktop.Sdk.Extension.llvm18
@@ -572,12 +572,12 @@ modules:
         tag: 0.6.7
         commit: 0773ca7620afdbc15a38a83d83ad424757fc4515
         dest: addons/ofxFFmpegRecorder
-      - type: git
-        url: https://github.com/kylemcdonald/ofxFft.git
+      - #type: git
+        #url: https://github.com/kylemcdonald/ofxFft.git
         # branch: master
         # tag:
-        commit: b5208b332efcb6172d19776f018468efaf9da8ea
-        dest: addons/ofxFft
+        #commit: b5208b332efcb6172d19776f018468efaf9da8ea
+        #dest: addons/ofxFft
       - type: git
         url: https://github.com/Akira-Hayasaka/ofxGLEditor
         # branch: master
@@ -628,7 +628,7 @@ modules:
         url: https://github.com/d3cod3/ofxPDSP.git
         # branch: master
         #tag: 0.6.6
-        commit: ec1d97ab63be8f2d01c93c133c5929528d25334e
+        commit: 5db66635050f7e58f2862b8194399ad54beb71fb
         dest: addons/ofxPDSP
       - type: git
         url: https://github.com/d3cod3/ofxScheme.git
@@ -643,7 +643,7 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
-        commit: 35e74de5eee6e7b62aacaec0070002d6717fa343
+        commit: 8cbae4d6bb8ae2d8f361e5682bceb1524a43b8b8
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -654,9 +654,9 @@ modules:
         # Mosaic
       - type: git
         url: https://github.com/d3cod3/Mosaic.git
-        # tag: 0.7.2
+        # tag: 0.7.3
         # branch: master
-        commit: 8621c4201f47b7b47bc0f9832db83e3db5e19840
+        commit: c4be9cff8a1b174c67af16a23ccaa2ec649efb9b
         dest: apps/d3cod3/Mosaic
 
      
