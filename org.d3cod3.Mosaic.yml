@@ -326,6 +326,18 @@ modules:
     cleanup: ['*'] 
 
   # gstreamer dependencies
+  - name: liba52
+    config-opts:
+      - --enable-shared
+      - --disable-static
+    rm-configure: true
+    cleanup: ['/bin/*a52*']
+    sources:
+      - type: archive
+        url: https://plug-mirror.rcac.purdue.edu/adelie/source/a52dec/a52dec-0.8.0.tar.gz
+        tag: 0.14.0
+        sha256: 03c181ce9c3fe0d2f5130de18dab9bd8bc63c354071515aa56983c74a9cffcc9
+
   - name: libass
     config-opts:
       - --enable-shared
@@ -335,6 +347,17 @@ modules:
         url: https://github.com/libass/libass.git
         tag: 0.14.0
         commit: 73284b676b12b47e17af2ef1b430527299e10c17
+
+  - name: libmpeg2
+    config-opts:
+      - --enable-shared
+      - --disable-static
+    rm-configure: true
+    cleanup: ['/bin/*mpeg2*']
+    sources:
+      - type: archive
+        url: https://web.archive.org/web/20250314123645id_/libmpeg2.sourceforge.io/files/libmpeg2-0.5.1.tar.gz
+        sha256: dee22e893cb5fc2b2b6ebd60b88478ab8556cb3b93f9a0d7ce8f3b61851871d4
 
   - name: gstreamer
     config-opts:
