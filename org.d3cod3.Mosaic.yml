@@ -26,8 +26,8 @@ finish-args:
 # - --filesystem=xdg-pictures
 # - --filesystem=xdg-videos
 cleanup:
-  - /lib/jack
-  - /lib/libjack*
+  - '/lib/jack'
+  - '/lib/libjack*'
 #add-extensions:
 #    org.freedesktop.Platform.ffmpeg-full:
 #      directory: lib/ffmpeg
@@ -36,14 +36,14 @@ cleanup:
 #      no-autodownload: true
 #      autodelete: false
 cleanup-commands:
-  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
-  - mkdir -p ${FLATPAK_DEST}/mosaic/apps/d3cod3/Mosaic/bin/data/tmp
+  - 'mkdir -p ${FLATPAK_DEST}/lib/ffmpeg'
+  - 'mkdir -p ${FLATPAK_DEST}/mosaic/apps/d3cod3/Mosaic/bin/data/tmp'
 modules:
 # openFrameworks dependencies
-  - shared-modules/glu/glu-9.json
-  - shared-modules/glew/glew.json
-  - shared-modules/gtk2/gtk2.json
-  - shared-modules/libusb/libusb.json
+  - "shared-modules/glu/glu-9.json"
+  - "shared-modules/glew/glew.json"
+  - "shared-modules/gtk2/gtk2.json"
+  - "shared-modules/libusb/libusb.json"
   - name: iputils
     buildsystem: meson
     config-opts:
@@ -572,12 +572,6 @@ modules:
         tag: 0.6.7
         commit: 0773ca7620afdbc15a38a83d83ad424757fc4515
         dest: addons/ofxFFmpegRecorder
-      - #type: git
-        #url: https://github.com/kylemcdonald/ofxFft.git
-        # branch: master
-        # tag:
-        #commit: b5208b332efcb6172d19776f018468efaf9da8ea
-        #dest: addons/ofxFft
       - type: git
         url: https://github.com/Akira-Hayasaka/ofxGLEditor
         # branch: master
