@@ -97,23 +97,29 @@ modules:
         dest-filename: autogen.sh
       
   - name: freeimage
-    buildsystem: simple
-    build-options:
-      cxxflags: -std=c++14
-    build-commands:
-      - sh gensrclist.sh
-      - sh genfipsrclist.sh
-      - make -f Makefile.gnu -j $FLATPAK_BUILDER_N_JOBS
-      - make -f Makefile.fip -j $FLATPAK_BUILDER_N_JOBS
-      - make -f Makefile.gnu INCDIR=/app/include INSTALLDIR=/app/lib install
-      - make -f Makefile.fip INCDIR=/app/include INSTALLDIR=/app/lib install
+    #buildsystem: simple
+    #build-options:
+    #  cxxflags: -std=c++14
+    #build-commands:
+    #  - sh gensrclist.sh
+    #  - sh genfipsrclist.sh
+    #  - make -f Makefile.gnu -j $FLATPAK_BUILDER_N_JOBS
+    #  - make -f Makefile.fip -j $FLATPAK_BUILDER_N_JOBS
+    #  - make -f Makefile.gnu INCDIR=/app/include INSTALLDIR=/app/lib install
+    #  - make -f Makefile.fip INCDIR=/app/include INSTALLDIR=/app/lib install
+    #sources:
+    #  - type: archive
+    #    url: https://github.com/danoli3/FreeImage/archive/refs/tags/3.19.10.tar.gz
+    #    sha256: 7dd22eeb95e967e541d864da8b3bc03e3050983f2de2cb1c09a60d28e679c6f2
+    #  - type: shell
+    #    commands:
+    #      - sed -i 's/-o root -g root //g' Makefile.{gnu,fip}
+    buildsystem: cmake-ninja
+    builddir: true
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/project/freeimage/Source%20Distribution/3.18.0/FreeImage3180.zip
-        sha256: f41379682f9ada94ea7b34fe86bf9ee00935a3147be41b6569c9605a53e438fd
-      - type: shell
-        commands:
-          - sed -i 's/-o root -g root //g' Makefile.{gnu,fip}
+        url: https://github.com/danoli3/FreeImage/archive/refs/tags/3.19.10.tar.gz
+        sha256: 7dd22eeb95e967e541d864da8b3bc03e3050983f2de2cb1c09a60d28e679c6f2
 
   - name: opencv
     buildsystem: cmake-ninja
