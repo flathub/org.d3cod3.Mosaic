@@ -325,6 +325,16 @@ modules:
         sha256: 6181a5dac66a6990aa3baf10a77ae677f372b9068be9ef73abfd37b73fb4c745
     cleanup: ['*'] 
 
+  - name: libass
+    config-opts:
+      - --enable-shared
+      - --disable-static
+    sources:
+      - type: git
+        url: https://github.com/libass/libass.git
+        tag: 0.14.0
+        commit: 73284b676b12b47e17af2ef1b430527299e10c17
+
   - name: gstreamer
     config-opts:
       - -Dbase=enabled
