@@ -374,13 +374,19 @@ modules:
 
   - name: libdvdread
     config-opts:
-      - --enable-shared
       - --disable-static
+    cleanup:
+      - /include
+      - /lib/pkgconfig
     sources:
-      - type: git
-        url: https://code.videolan.org/videolan/libdvdread.git
-        tag: 6.1.0
-        commit: d413571ce39acd404523b6742ba361215f6ada68
+      - type: archive
+        url: https://download.videolan.org/pub/videolan/libdvdread/6.1.3/libdvdread-6.1.3.tar.bz2
+        sha256: ce35454997a208cbe50e91232f0e73fb1ac3471965813a13b8730a8f18a15369
+        x-checker-data:
+          type: html
+          url: https://www.videolan.org/developers/libdvdnav.html
+          version-pattern: The latest version of <code>libdvdread</code> is <b>([\d\-\.]+)<
+          url-template: https://download.videolan.org/pub/videolan/libdvdread/$version/libdvdread-$version.tar.bz2
 
   - name: libmpeg2
     config-opts:
