@@ -34,7 +34,11 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/d3cod3/Mosaic/master/process/img/28_transparent_machines04.jpg</image>
+      <image>https://raw.githubusercontent.com/d3cod3/Mosaic/refs/heads/master/process/img/32_strangeAttractors.jpg</image>
+      <caption>Strange Attractors</caption>
+    </screenshot>
+    <screenshot>
+    <image>https://raw.githubusercontent.com/d3cod3/Mosaic/master/process/img/28_transparent_machines04.jpg</image>
       <caption>Transparent Machines</caption>
     </screenshot>
     <screenshot>
@@ -66,9 +70,10 @@
     <release version="0.7.3" date="2025-10-22">
       <description>
         <p>
-          https://github.com/d3cod3/Mosaic/releases/tag/0.7.3
+          An openFrameworks based Visual Patching Creative-Coding Platform
         </p>
       </description>
+      <url>https://github.com/d3cod3/Mosaic/releases/tag/0.7.3</url>
     </release>
   </releases>
 </component>
