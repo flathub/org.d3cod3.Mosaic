@@ -65,7 +65,9 @@
   <releases>
     <release version="0.7.3" date="2025-10-22">
       <description>
-        https://github.com/d3cod3/Mosaic/releases/tag/0.7.3
+        <p>
+          https://github.com/d3cod3/Mosaic/releases/tag/0.7.3
+        </p>
       </description>
     </release>
   </releases>
