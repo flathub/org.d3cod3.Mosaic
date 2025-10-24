@@ -1,6 +1,6 @@
 app-id: org.d3cod3.Mosaic
 runtime: org.gnome.Platform
-runtime-version: '46'
+runtime-version: '48'
 sdk: org.gnome.Sdk
 #sdk-extensions:
 #  - org.freedesktop.Sdk.Extension.llvm18
@@ -26,8 +26,8 @@ finish-args:
 # - --filesystem=xdg-pictures
 # - --filesystem=xdg-videos
 cleanup:
-  - /lib/jack
-  - /lib/libjack*
+  - '/lib/jack'
+  - '/lib/libjack*'
 #add-extensions:
 #    org.freedesktop.Platform.ffmpeg-full:
 #      directory: lib/ffmpeg
@@ -36,14 +36,14 @@ cleanup:
 #      no-autodownload: true
 #      autodelete: false
 cleanup-commands:
-  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
-  - mkdir -p ${FLATPAK_DEST}/mosaic/apps/d3cod3/Mosaic/bin/data/tmp
+  - 'mkdir -p ${FLATPAK_DEST}/lib/ffmpeg'
+  - 'mkdir -p ${FLATPAK_DEST}/mosaic/apps/d3cod3/Mosaic/bin/data/tmp'
 modules:
 # openFrameworks dependencies
-  - shared-modules/glu/glu-9.json
-  - shared-modules/glew/glew.json
-  - shared-modules/gtk2/gtk2.json
-  - shared-modules/libusb/libusb.json
+  - "shared-modules/glu/glu-9.json"
+  - "shared-modules/glew/glew.json"
+  - "shared-modules/gtk2/gtk2.json"
+  - "shared-modules/libusb/libusb.json"
   - name: iputils
     buildsystem: meson
     config-opts:
@@ -100,6 +100,12 @@ modules:
     buildsystem: simple
     build-options:
       cxxflags: -std=c++14
+      cflags: -Wno-error=implicit-function-declaration
+      arch:
+        aarch64:
+          # See https://sourceforge.net/p/freeimage/bugs/325/
+          cflags: -fPIC -DPNG_ARM_NEON_OPT=0
+          cxxflags: -fPIC
     build-commands:
       - sh gensrclist.sh
       - sh genfipsrclist.sh
@@ -114,6 +120,12 @@ modules:
       - type: shell
         commands:
           - sed -i 's/-o root -g root //g' Makefile.{gnu,fip}
+    # buildsystem: cmake-ninja
+    # builddir: true
+    # sources:
+    #   - type: archive
+    #     url: https://github.com/danoli3/FreeImage/archive/refs/tags/3.19.10.tar.gz
+    #     sha256: 7dd22eeb95e967e541d864da8b3bc03e3050983f2de2cb1c09a60d28e679c6f2
 
   - name: opencv
     buildsystem: cmake-ninja
@@ -166,9 +178,12 @@ modules:
     - "--with-jack"
     - "--with-pulse"
     sources:
+    # - type: archive
+    #   url: https://caml.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.2.0.tar.gz
+    #   sha256: d6089c214e5dbff136ab21f3f5efc284e93475ebd198c54d4b9b6c44419ef4e6
     - type: archive
-      url: http://www.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.1.0.tar.gz
-      sha256: ff138b2b6ed2b700b04b406be718df213052d4c952190280cf4e2fab4b61fe09
+      url: http://caml.music.mcgill.ca/~gary/rtaudio/release/rtaudio-6.0.1.tar.gz
+      sha256: 42d29cc2b5fa378ba3a978faeb1885a0075acf0fecb5ee50f0d76f6c7d8ab28c
 
   - name: boost
     buildsystem: simple
@@ -178,7 +193,7 @@ modules:
       - ./b2 -j $FLATPAK_BUILDER_N_JOBS install
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.83.0/source/boost_1_83_0.tar.bz2
+        url: https://archives.boost.io/release/1.83.0/source/boost_1_83_0.tar.bz2
         sha256: 6478edfe2f3305127cffe8caf73ea0176c53769f4bf1585be237eb30798c3b8e
 
   - name: glfw
@@ -196,7 +211,7 @@ modules:
     - "/lib/pkgconfig"
 
   - name: liburiparser
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     config-opts:
     - "-DURIPARSER_BUILD_DOCS=OFF"
     - "-DURIPARSER_BUILD_TESTS=OFF"
@@ -218,7 +233,7 @@ modules:
       sha256: 55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a
 
   - name: poco
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     sources:
     - type: archive
       url: https://github.com/pocoproject/poco/archive/poco-1.12.4-release.tar.gz
@@ -310,14 +325,148 @@ modules:
         sha256: 6181a5dac66a6990aa3baf10a77ae677f372b9068be9ef73abfd37b73fb4c745
     cleanup: ['*'] 
 
+  # gstreamer dependencies
+  - name: liba52
+    config-opts:
+      - --enable-shared
+      - --disable-static
+    rm-configure: true
+    cleanup: ['/bin/*a52*']
+    sources:
+      - type: archive
+        url: https://plug-mirror.rcac.purdue.edu/adelie/source/a52dec/a52dec-0.8.0.tar.gz
+        sha256: 03c181ce9c3fe0d2f5130de18dab9bd8bc63c354071515aa56983c74a9cffcc9
+
+  - name: libass
+    config-opts:
+      - --enable-shared
+      - --disable-static
+    sources:
+      - type: git
+        url: https://github.com/libass/libass.git
+        tag: 0.14.0
+        commit: 73284b676b12b47e17af2ef1b430527299e10c17
+
+  - name: libcdio
+    config-opts:
+      - --enable-cxx
+      - --without-cd-drive
+      - --without-cd-info
+      - --without-cdda-player
+      - --without-cd-read
+      - --without-iso-info
+      - --without-iso-read
+      - --disable-example-progs
+    cleanup:
+      - /include
+      - /share/info
+      - '*.a'
+      - '*.la'
+      - /lib/*.so
+    sources:
+      - type: archive
+        url: https://github.com/libcdio/libcdio/releases/download/2.2.0/libcdio-2.2.0.tar.gz
+        sha256: 1b6c58137f71721ddb78773432d26252ee6500d92d227d4c4892631c30ea7abb
+        x-checker-data:
+          type: anitya
+          project-id: 1573
+          url-template: https://github.com/libcdio/libcdio/releases/download/$version/libcdio-$version.tar.gz
+
+  - name: libdvdread
+    config-opts:
+      - --disable-static
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+    sources:
+      - type: archive
+        url: https://download.videolan.org/pub/videolan/libdvdread/6.1.3/libdvdread-6.1.3.tar.bz2
+        sha256: ce35454997a208cbe50e91232f0e73fb1ac3471965813a13b8730a8f18a15369
+        x-checker-data:
+          type: html
+          url: https://www.videolan.org/developers/libdvdnav.html
+          version-pattern: The latest version of <code>libdvdread</code> is <b>([\d\-\.]+)<
+          url-template: https://download.videolan.org/pub/videolan/libdvdread/$version/libdvdread-$version.tar.bz2
+
+  - name: libmpeg2
+    config-opts:
+      - --enable-shared
+      - --disable-static
+    rm-configure: true
+    cleanup: ['/bin/*mpeg2*']
+    sources:
+      - type: archive
+        url: https://web.archive.org/web/20250314123645id_/libmpeg2.sourceforge.io/files/libmpeg2-0.5.1.tar.gz
+        sha256: dee22e893cb5fc2b2b6ebd60b88478ab8556cb3b93f9a0d7ce8f3b61851871d4
+      - type: patch
+        path: libmpeg2-inline.patch
+      - type: script
+        commands:
+          - "autoreconf -fiv"
+        dest-filename: autogen.sh
+
+
   - name: gstreamer
     config-opts:
+      - -Dbase=enabled
+      - -Dgood=enabled
+      - -Dbad=enabled
+      - -Dugly=enabled
+      - -Dlibav=enabled
       - -Dvaapi=enabled
+      - -Dsharp=disabled
+      - -Drs=disabled
+      - -Dpython=disabled
+      - -Ddevtools=disabled
+      - -Dges=disabled
+      - -Drtsp_server=disabled
+      - -Dgst-examples=disabled
+      - -Dqt5=disabled
+      - -Dtests=disabled
+      - -Dexamples=disabled
+      - -Dintrospection=enabled
+      - -Ddoc=disabled
+      - -Dgtk_doc=disabled
+      - -Dgpl=enabled
+      - -Dgst-plugins-base:gobject-cast-checks=disabled
+      - -Dgst-plugins-base:glib-asserts=disabled
+      - -Dgst-plugins-base:glib-checks=disabled
+      - -Dgst-plugins-base:gl_api=opengl,gles2
+      - -Dgst-plugins-base:gl_platform=egl,glx
+
+      - -Dgst-plugins-good:gobject-cast-checks=disabled
+      - -Dgst-plugins-good:glib-asserts=disabled
+      - -Dgst-plugins-good:glib-checks=disabled
+      - -Dgst-plugins-good:gtk3=disabled
+
+      - -Dgst-plugins-bad:gobject-cast-checks=disabled
+      - -Dgst-plugins-bad:glib-asserts=disabled
+      - -Dgst-plugins-bad:glib-checks=disabled
+      - -Dgst-plugins-bad:extra-checks=disabled
+      - -Dgst-plugins-bad:vulkan=disabled
+      - -Dgst-plugins-bad:webrtc=disabled
+      - -Dgst-plugins-bad:wasapi=disabled
+      - -Dgst-plugins-bad:wasapi2=disabled
+      - -Dgst-plugins-bad:winks=disabled
+      - -Dgst-plugins-bad:winscreencap=disabled
+      - -Dgst-plugins-bad:assrender=enabled
+      - -Dgst-plugins-bad:nvcodec=enabled
+      - -Dgst-plugins-bad:v4l2codecs=enabled
+      - -Dgst-plugins-bad:va=enabled
+
+      - -Dgst-plugins-ugly:gobject-cast-checks=disabled
+      - -Dgst-plugins-ugly:glib-asserts=disabled
+      - -Dgst-plugins-ugly:glib-checks=disabled
+      - -Dgst-plugins-ugly:mpeg2dec=enabled
     buildsystem: meson
+    build-options:
+      cflags: -Wno-error=implicit-function-declaration
     sources:
       - type: git
         url: https://gitlab.freedesktop.org/gstreamer/gstreamer
-        commit: "1.22.6"
+        tag: 1.24.11
+        commit: c0491f96b58a19d637ce0314cf062deba013d455
+        disable-submodules: true
     cleanup: ['*']
 
   # libopendht dependencies
@@ -464,7 +613,7 @@ modules:
 
   # libguile dependencies
   - name: libatomic_ops
-    uildsystem: autotools
+    buildsystem: autotools
     sources:
       - type: archive
         url: https://github.com/ivmai/libatomic_ops/releases/download/v7.8.2/libatomic_ops-7.8.2.tar.gz
@@ -478,8 +627,8 @@ modules:
   - name: bdw-gc
     sources:
       - type: archive
-        url: https://www.hboehm.info/gc/gc_source/gc.tar.gz
-        sha256: 7649020621cb26325e1fb5c8742590d92fb48ce5c259b502faf7d9fb5dabb160
+        url: https://github.com/bdwgc/bdwgc/releases/download/v8.2.10/gc-8.2.10.tar.gz
+        sha256: 832cf4f7cf676b59582ed3b1bbd90a8d0e0ddbc3b11cb3b2096c5177ce39cc47
   
   - name: guile
     buildsystem: autotools
@@ -573,12 +722,6 @@ modules:
         commit: 0773ca7620afdbc15a38a83d83ad424757fc4515
         dest: addons/ofxFFmpegRecorder
       - type: git
-        url: https://github.com/kylemcdonald/ofxFft.git
-        # branch: master
-        # tag:
-        commit: b5208b332efcb6172d19776f018468efaf9da8ea
-        dest: addons/ofxFft
-      - type: git
         url: https://github.com/Akira-Hayasaka/ofxGLEditor
         # branch: master
         commit: 46dfefa6b6bf64a04b37ed9d0ecb3e275cb8035b
@@ -628,7 +771,7 @@ modules:
         url: https://github.com/d3cod3/ofxPDSP.git
         # branch: master
         #tag: 0.6.6
-        commit: ec1d97ab63be8f2d01c93c133c5929528d25334e
+        commit: 5db66635050f7e58f2862b8194399ad54beb71fb
         dest: addons/ofxPDSP
       - type: git
         url: https://github.com/d3cod3/ofxScheme.git
@@ -643,7 +786,7 @@ modules:
       - type: git
         url: https://github.com/d3cod3/ofxVisualProgramming.git
         # branch: master
-        commit: 35e74de5eee6e7b62aacaec0070002d6717fa343
+        commit: 8cbae4d6bb8ae2d8f361e5682bceb1524a43b8b8
         dest: addons/ofxVisualProgramming
       - type: git
         url: https://github.com/d3cod3/ofxWarp.git
@@ -654,9 +797,9 @@ modules:
         # Mosaic
       - type: git
         url: https://github.com/d3cod3/Mosaic.git
-        # tag: 0.7.2
+        # tag: 0.7.3
         # branch: master
-        commit: 8621c4201f47b7b47bc0f9832db83e3db5e19840
+        commit: c4be9cff8a1b174c67af16a23ccaa2ec649efb9b
         dest: apps/d3cod3/Mosaic
 
      
