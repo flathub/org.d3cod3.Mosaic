@@ -200,15 +200,17 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-    - "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
-    - "-DBUILD_SHARED_LIBS:BOOL=ON"
+      - -DBUILD_SHARED_LIBS=ON
+      - -DGLFW_BUILD_EXAMPLES=OFF
+      - -DGLFW_BUILD_TESTS=OFF
+      - -DGLFW_BUILD_DOCS=OFF
     sources:
-    - type: archive
-      url: https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip
-      sha256: b5ec004b2712fd08e8861dc271428f048775200a2df719ccf575143ba749a3e9
+      - type: archive
+        url: https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip
+        sha256: b5ec004b2712fd08e8861dc271428f048775200a2df719ccf575143ba749a3e9
     cleanup:
-    - "/include"
-    - "/lib/pkgconfig"
+      - /include
+      - /lib/pkgconfig
 
   - name: liburiparser
     buildsystem: cmake-ninja
