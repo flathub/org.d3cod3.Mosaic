@@ -60,6 +60,7 @@
   </screenshots>
 
   <url type="homepage">https://mosaic.d3cod3.org/</url>
+  <url type="help">https://github.com/d3cod3/Mosaic</url>
   <content_rating type="oars-1.1" />
 
   <provides>
@@ -67,7 +68,7 @@
   </provides>
 
   <releases>
-    <release version="0.7.3" date="2025-10-22">
+    <release version="0.7.3" date="2025-10-25">
       <description>
         <p>
           An openFrameworks based Visual Patching Creative-Coding Platform
