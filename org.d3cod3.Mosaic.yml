@@ -634,6 +634,8 @@ modules:
   
   - name: guile
     buildsystem: autotools
+    build-options:
+      no-debuginfo: true
     config-opts:
       - "--prefix=/app"
     sources:
@@ -647,6 +649,7 @@ modules:
         url-template: https://ftp.gnu.org/gnu/guile/guile-$version.tar.xz
     cleanup:
       - /bin
+      - /lib/libguile-2.2.so.1.4.2-gdb.scm
   
   # Mosaic/openframeworks
   - name: openframeworks
