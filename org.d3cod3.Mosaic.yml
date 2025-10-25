@@ -208,6 +208,13 @@ modules:
       - type: archive
         url: https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip
         sha256: b5ec004b2712fd08e8861dc271428f048775200a2df719ccf575143ba749a3e9
+    # config-opts:
+    #   - "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+    #   - "-DBUILD_SHARED_LIBS:BOOL=ON"
+    # sources:
+    #   - type: archive
+    #     url: https://github.com/glfw/glfw/releases/download/3.3.2/glfw-3.3.2.zip
+    #     sha256: 08a33a512f29d7dbf78eab39bd7858576adcc95228c9efe8e4bc5f0f3261efc7
     cleanup:
       - /include
       - /lib/pkgconfig
