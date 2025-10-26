@@ -8,11 +8,13 @@ command: mosaic
 finish-args:
   # X11 + XShm access
   - --share=ipc
-  #- --socket=x11
+  - --socket=x11
+
   # overrides x11 socket permission
-  - --socket=fallback-x11
-  # Wayland access
-  - --socket=wayland
+  #- --socket=fallback-x11
+  # Wayland access ( NOT WORKING FOR NOW, using x11 runs fine with xwayland )
+  #- --socket=wayland
+
   # Audio
   - --socket=pulseaudio
   # Needs access to webcams and so
