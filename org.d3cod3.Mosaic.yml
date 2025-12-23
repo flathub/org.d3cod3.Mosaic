@@ -26,8 +26,8 @@ finish-args:
 # - --filesystem=xdg-pictures
 # - --filesystem=xdg-videos
 cleanup:
-  - '/lib/jack'
-  - '/lib/libjack*'
+  - /lib/jack
+  - /lib/libjack*
 #add-extensions:
 #    org.freedesktop.Platform.ffmpeg-full:
 #      directory: lib/ffmpeg
@@ -36,38 +36,38 @@ cleanup:
 #      no-autodownload: true
 #      autodelete: false
 cleanup-commands:
-  - 'mkdir -p ${FLATPAK_DEST}/lib/ffmpeg'
-  - 'mkdir -p ${FLATPAK_DEST}/mosaic/apps/d3cod3/Mosaic/bin/data/tmp'
+  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
+  - mkdir -p ${FLATPAK_DEST}/mosaic/apps/d3cod3/Mosaic/bin/data/tmp
 modules:
 # openFrameworks dependencies
-  - "shared-modules/glu/glu-9.json"
-  - "shared-modules/glew/glew.json"
-  - "shared-modules/gtk2/gtk2.json"
-  - "shared-modules/libusb/libusb.json"
+  - shared-modules/glu/glu-9.json
+  - shared-modules/glew/glew.json
+  - shared-modules/gtk2/gtk2.json
+  - shared-modules/libusb/libusb.json
   - name: iputils
     buildsystem: meson
     config-opts:
-      - "-DUSE_CAP=false"
-      - "-DUSE_IDN=false"
-      - "-DBUILD_ARPING=false"
-      - "-DBUILD_CLOCKDIFF=false"
-      - "-DBUILD_RARPD=false"
-      - "-DBUILD_RDISC=false"
-      - "-DENABLE_RDISC_SERVER=false"
-      - "-DBUILD_TFTPD=false"
-      - "-DBUILD_TRACEPATH=false"
-      - "-DBUILD_TRACEROUTE6=false"
-      - "-DBUILD_NINFOD=false"
-      - "-DNINFOD_MESSAGES=false"
-      - "-DBUILD_MANS=false"
-      - "-DBUILD_HTML_MANS=false"
-      - "-DNO_SETCAP_OR_SUID=false"
-      - "-DUSE_GETTEXT=false"
+      - -DUSE_CAP=false
+      - -DUSE_IDN=false
+      - -DBUILD_ARPING=false
+      - -DBUILD_CLOCKDIFF=false
+      - -DBUILD_RARPD=false
+      - -DBUILD_RDISC=false
+      - -DENABLE_RDISC_SERVER=false
+      - -DBUILD_TFTPD=false
+      - -DBUILD_TRACEPATH=false
+      - -DBUILD_TRACEROUTE6=false
+      - -DBUILD_NINFOD=false
+      - -DNINFOD_MESSAGES=false
+      - -DBUILD_MANS=false
+      - -DBUILD_HTML_MANS=false
+      - -DNO_SETCAP_OR_SUID=false
+      - -DUSE_GETTEXT=false
     sources:
       - type: archive
         url: https://github.com/iputils/iputils/archive/s20190709.tar.gz
         sha256: a15720dd741d7538dd2645f9f516d193636ae4300ff7dbc8bfca757bf166490a
-  
+
   - name: freeglut
     build-options:
       cflags: -fcommon
@@ -76,15 +76,15 @@ modules:
     builddir: true
     sources:
       - type: archive
-        url: "https://sourceforge.net/projects/freeglut/files/freeglut/3.2.1/freeglut-3.2.1.tar.gz"
+        url: https://sourceforge.net/projects/freeglut/files/freeglut/3.2.1/freeglut-3.2.1.tar.gz
         sha256: d4000e02102acaf259998c870e25214739d1f16f67f99cb35e4f46841399da68
-        
+
   - name: libxmu
     sources:
       - type: archive
         url: https://www.x.org/archive//individual/lib/libXmu-1.1.3.tar.bz2
         sha256: 9c343225e7c3dc0904f2122b562278da5fed639b1b5e880d25111561bac5b731
-        
+
   - name: libraw1394
     rm-configure: true
     sources:
@@ -92,10 +92,10 @@ modules:
         url: https://www.kernel.org/pub/linux/libs/ieee1394/libraw1394-2.1.2.tar.xz
         sha256: 03ccc69761d22c7deb1127fc301010dd13e70e44bb7134b8ff0d07590259a55e
       - type: script
-        commands: 
-         - autoreconf -fiv
+        commands:
+          - autoreconf -fiv
         dest-filename: autogen.sh
-      
+
   - name: freeimage
     buildsystem: simple
     build-options:
@@ -173,14 +173,14 @@ modules:
   - name: rtaudio
     config-opts:
     #- "--disable-static"
-    - "--enable-shared"
-    - "--with-alsa"
-    - "--with-jack"
-    - "--with-pulse"
+      - --enable-shared
+      - --with-alsa
+      - --with-jack
+      - --with-pulse
     sources:
-    - type: archive
-      url: https://caml.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.2.0.tar.gz
-      sha256: d6089c214e5dbff136ab21f3f5efc284e93475ebd198c54d4b9b6c44419ef4e6
+      - type: archive
+        url: https://caml.music.mcgill.ca/~gary/rtaudio/release/rtaudio-5.2.0.tar.gz
+        sha256: d6089c214e5dbff136ab21f3f5efc284e93475ebd198c54d4b9b6c44419ef4e6
     # - type: archive
     #   url: http://caml.music.mcgill.ca/~gary/rtaudio/release/rtaudio-6.0.1.tar.gz
     #   sha256: 42d29cc2b5fa378ba3a978faeb1885a0075acf0fecb5ee50f0d76f6c7d8ab28c
@@ -222,60 +222,60 @@ modules:
   - name: liburiparser
     buildsystem: cmake-ninja
     config-opts:
-    - "-DURIPARSER_BUILD_DOCS=OFF"
-    - "-DURIPARSER_BUILD_TESTS=OFF"
+      - -DURIPARSER_BUILD_DOCS=OFF
+      - -DURIPARSER_BUILD_TESTS=OFF
     cleanup:
-    - "/bin/uriparse"
+      - /bin/uriparse
     sources:
-    - type: archive
-      url: https://github.com/uriparser/uriparser/releases/download/uriparser-0.9.4/uriparser-0.9.4.tar.bz2
-      sha256: b7cdabe5611408fc2c3a10f8beecb881a0c7e93ff669c578cd9e3e6d64b8f87b
+      - type: archive
+        url: https://github.com/uriparser/uriparser/releases/download/uriparser-0.9.4/uriparser-0.9.4.tar.bz2
+        sha256: b7cdabe5611408fc2c3a10f8beecb881a0c7e93ff669c578cd9e3e6d64b8f87b
 
   - name: pugixml
     buildsystem: cmake-ninja
     build-options:
-      cflags: "-fPIC"
-      cxxflags: "-fPIC"
+      cflags: -fPIC
+      cxxflags: -fPIC
     sources:
-    - type: archive
-      url: https://github.com/zeux/pugixml/releases/download/v1.10/pugixml-1.10.tar.gz
-      sha256: 55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a
+      - type: archive
+        url: https://github.com/zeux/pugixml/releases/download/v1.10/pugixml-1.10.tar.gz
+        sha256: 55f399fbb470942410d348584dc953bcaec926415d3462f471ef350f29b5870a
 
   - name: poco
     buildsystem: cmake-ninja
     sources:
-    - type: archive
-      url: https://github.com/pocoproject/poco/archive/poco-1.12.4-release.tar.gz
-      sha256: 71ef96c35fced367d6da74da294510ad2c912563f12cd716ab02b6ed10a733ef
+      - type: archive
+        url: https://github.com/pocoproject/poco/archive/poco-1.12.4-release.tar.gz
+        sha256: 71ef96c35fced367d6da74da294510ad2c912563f12cd716ab02b6ed10a733ef
   - name: libdaemon
     buildsystem: autotools
     config-opts:
-      - "--prefix=/app"
+      - --prefix=/app
     sources:
       - type: archive
         url: http://0pointer.de/lennart/projects/libdaemon/libdaemon-0.14.tar.gz
         sha256: fd23eb5f6f986dcc7e708307355ba3289abe03cc381fc47a80bca4a50aa6b834
-        
+
   - name: libevent
     buildsystem: autotools
     config-opts:
-      - "--prefix=/app"
+      - --prefix=/app
     sources:
       - type: git
         url: https://github.com/libevent/libevent
         tag: release-2.1.12-stable
-        
+
   - name: avahi
     buildsystem: autotools
     config-opts:
-      - "--prefix=/app"
-      - "--with-distro=none"
-      - "--disable-gtk3"
-      - "--disable-mono"
-      - "--disable-qt5"
-      - "--disable-manpages"
-      - "--disable-python"
-      - "--with-systemdsystemunitdir=no"
+      - --prefix=/app
+      - --with-distro=none
+      - --disable-gtk3
+      - --disable-mono
+      - --disable-qt5
+      - --disable-manpages
+      - --disable-python
+      - --with-systemdsystemunitdir=no
     sources:
       - type: git
         url: https://github.com/lathiat/avahi
@@ -326,13 +326,13 @@ modules:
     only-arches:
       - x86_64
     no-autogen: true
-    make-install-args: 
+    make-install-args:
       - PREFIX=/app
     sources:
       - type: archive
         url: https://github.com/FFmpeg/nv-codec-headers/archive/n9.0.18.1.tar.gz
         sha256: 6181a5dac66a6990aa3baf10a77ae677f372b9068be9ef73abfd37b73fb4c745
-    cleanup: ['*'] 
+    cleanup: ['*']
 
   # gstreamer dependencies
   - name: liba52
@@ -340,7 +340,7 @@ modules:
       - --enable-shared
       - --disable-static
     rm-configure: true
-    cleanup: ['/bin/*a52*']
+    cleanup: [/bin/*a52*]
     sources:
       - type: archive
         url: https://plug-mirror.rcac.purdue.edu/adelie/source/a52dec/a52dec-0.8.0.tar.gz
@@ -374,8 +374,8 @@ modules:
       - /lib/*.so
     sources:
       - type: archive
-        url: https://github.com/libcdio/libcdio/releases/download/2.2.0/libcdio-2.2.0.tar.gz
-        sha256: 1b6c58137f71721ddb78773432d26252ee6500d92d227d4c4892631c30ea7abb
+        url: https://github.com/libcdio/libcdio/releases/download/2.3.0/libcdio-2.3.0.tar.gz
+        sha256: 37bcb13296febbcff9dc4485834bac09212cb463c31fcea52f70ee1dd3a5a5de
         x-checker-data:
           type: anitya
           project-id: 1573
@@ -402,7 +402,7 @@ modules:
       - --enable-shared
       - --disable-static
     rm-configure: true
-    cleanup: ['/bin/*mpeg2*']
+    cleanup: [/bin/*mpeg2*]
     sources:
       - type: archive
         url: https://web.archive.org/web/20250314123645id_/libmpeg2.sourceforge.io/files/libmpeg2-0.5.1.tar.gz
@@ -411,7 +411,7 @@ modules:
         path: libmpeg2-inline.patch
       - type: script
         commands:
-          - "autoreconf -fiv"
+          - autoreconf -fiv
         dest-filename: autogen.sh
 
 
@@ -511,7 +511,7 @@ modules:
         project-id: 117
         stable-only: true
         url-template: https://sourceforge.net/projects/asio/files/asio/$version%20%28Stable%29/asio-$version.tar.bz2
- 
+
   - name: jsoncpp
     buildsystem: meson
     config-opts:
@@ -632,19 +632,19 @@ modules:
       - type: archive
         url: https://ftp.gnu.org/gnu/libunistring/libunistring-1.3.tar.gz
         sha256: 8ea8ccf86c09dd801c8cac19878e804e54f707cf69884371130d20bde68386b7
-  
+
   - name: bdw-gc
     sources:
       - type: archive
         url: https://github.com/bdwgc/bdwgc/releases/download/v8.2.10/gc-8.2.10.tar.gz
         sha256: 832cf4f7cf676b59582ed3b1bbd90a8d0e0ddbc3b11cb3b2096c5177ce39cc47
-  
+
   - name: guile
     buildsystem: autotools
     build-options:
       no-debuginfo: true
     config-opts:
-      - "--prefix=/app"
+      - --prefix=/app
     sources:
       - type: archive
         url: https://ftp.gnu.org/gnu/guile/guile-2.2.7.tar.xz
@@ -657,14 +657,14 @@ modules:
     cleanup:
       - /bin
       - /lib/libguile-2.2.so.1.4.2-gdb.scm
-  
+
   # Mosaic/openframeworks
   - name: openframeworks
     buildsystem: simple
     # subdir: libs/openFrameworksCompiled/project
     build-commands:
       - cd libs/openFrameworksCompiled/project && make -j$FLATPAK_BUILDER_N_JOBS
-      - cd apps/d3cod3/Mosaic && make -j$FLATPAK_BUILDER_N_JOBS CXXFLAGS=-I/app/include/guile/2.2  
+      - cd apps/d3cod3/Mosaic && make -j$FLATPAK_BUILDER_N_JOBS CXXFLAGS=-I/app/include/guile/2.2
       # debug - cd apps/d3cod3/Mosaic && make CXXFLAGS='-g -O2' -j$FLATPAK_BUILDER_N_JOBS Debug
       - mkdir /app/mosaic
       - cp -ar * /app/mosaic
@@ -677,9 +677,9 @@ modules:
       - src
     sources:
       - type: file
-        path: "org.d3cod3.Mosaic.appdata.xml"
+        path: org.d3cod3.Mosaic.appdata.xml
       - type: file
-        path: "org.d3cod3.Mosaic.desktop"
+        path: org.d3cod3.Mosaic.desktop
 # openframeworks
       - type: archive
         #url: https://github.com/openframeworks/openFrameworks/releases/download/0.12.0/of_v0.12.0_linux64gcc6_release.tar.gz
@@ -689,8 +689,10 @@ modules:
 # use openCV 4
       - type: shell
         commands:
-          - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv\s/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4 /g' addons/ofxOpenCv/addon_config.mk
-          - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv$/ADDON_PKG_CONFIG_LIBRARIES =\1opencv4/g' addons/ofxOpenCv/addon_config.mk
+          - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv\s/ADDON_PKG_CONFIG_LIBRARIES
+            =\1opencv4 /g' addons/ofxOpenCv/addon_config.mk
+          - sed -i -E 's/ADDON_PKG_CONFIG_LIBRARIES =(.*)opencv$/ADDON_PKG_CONFIG_LIBRARIES
+            =\1opencv4/g' addons/ofxOpenCv/addon_config.mk
       #- type: patch
       #  path: openal_fix.patch
       #  strip-components: 0
@@ -814,5 +816,5 @@ modules:
         commit: c4be9cff8a1b174c67af16a23ccaa2ec649efb9b
         dest: apps/d3cod3/Mosaic
 
-     
+
 
