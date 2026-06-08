@@ -1,0 +1,22 @@
+diff --git a/addons/ofxPd/libs/libpd/pure-data/extra/fiddle~/fiddle~.c b/addons/ofxPd/libs/libpd/pure-data/extra/fiddle~/fiddle~.c
+index 5001656..af23ee9 100644
+--- a/addons/ofxPd/libs/libpd/pure-data/extra/fiddle~/fiddle~.c
++++ b/addons/ofxPd/libs/libpd/pure-data/extra/fiddle~/fiddle~.c
+@@ -34,6 +34,8 @@
+ #pragma warning (disable: 4305 4244)
+ #endif
+ 
++#include <math.h>
++
+ /* this #ifdef does nothing, but its there... */
+ #ifdef _WIN32
+ #define flog log
+@@ -115,8 +117,6 @@ typedef float t_float;
+ typedef double t_floatarg;
+ #endif /* MSP */
+ 
+-#include <math.h>
+-
+ 
+ #define MINBIN 3
+ #define DEFAMPLO 40
